@@ -2,7 +2,7 @@
   "date": "2026-09-25",
   "passed": true,
   "repository": "https://github.com/Rezx100/obs-companion",
-  "visibility": "private",
+  "visibility": "public",
   "defaultBranch": "main",
   "workflow": "Agentic CI/CD",
   "successfulRun": "https://github.com/Rezx100/obs-companion/actions/runs/36108406207",
@@ -25,8 +25,12 @@
     "httpStatus": 200
   },
   "branchProtection": {
-    "enabled": false,
-    "reason": "GitHub Free does not provide branch protection for a private personal repository",
+    "enabled": true,
+    "pullRequestRequired": true,
+    "requiredChecks": ["Validate source"],
+    "strict": true,
+    "forcePushesAllowed": false,
+    "branchDeletionAllowed": false,
     "workflowDeployRequiresValidation": true
   },
   "localDeployPrivateKeyRemovedAfterSecretUpload": true
