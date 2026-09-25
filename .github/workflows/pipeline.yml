@@ -26,10 +26,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Check out reviewed revision
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
 
       - name: Install Node.js 24
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
         with:
           node-version: 24.19.0
           cache: npm
@@ -47,6 +47,11 @@ jobs:
           npm run build
           npm run build:server
           npm audit --omit=dev
+          trap 'rm -f deploy/runtime.env' EXIT
+          printf '%s\n' \
+            'COMPANION_TOKEN=ci-validation-token-00000000000000000000000000000000' \
+            'OBS_WEBSOCKET_PASSWORD=ci-validation-password-0000000000000000000000000000' \
+            > deploy/runtime.env
           docker compose -f deploy/compose.yaml config --quiet
           node --check deploy/entrypoint.cjs
           node --check deploy/healthcheck.cjs
@@ -62,7 +67,7 @@ jobs:
     environment: production
     steps:
       - name: Check out validated revision
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
 
       - name: Configure restricted deployment identity
         env:
@@ -95,4 +100,3 @@ jobs:
               -o IdentitiesOnly=yes \
               -o StrictHostKeyChecking=yes \
               "root@$VPS_HOST"
-
