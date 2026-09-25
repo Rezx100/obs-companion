@@ -23,7 +23,8 @@
     "lint:design": "node scripts/lint-design.cjs",
     "test:web:a11y": "node scripts/web-accessibility-test.cjs",
     "test:web:journey": "node scripts/server-ui-test.cjs",
-    "build:cloud": "node scripts/build-cloud.cjs"
+    "build:cloud": "node scripts/build-cloud.cjs",
+    "build:hostinger": "node scripts/build-hostinger.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.99.1",
