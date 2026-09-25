@@ -36,6 +36,8 @@ fi
 
 mkdir -p "$source_dir"
 tar -xzf "$archive" -C "$source_dir" --no-same-owner --no-same-permissions
+find "$source_dir" -type d -exec chmod 0755 {} +
+find "$source_dir" -type f -exec chmod 0644 {} +
 test -f "$source_dir/package.json"
 test -f "$source_dir/package-lock.json"
 test -f "$source_dir/deploy/compose.yaml"
@@ -58,6 +60,7 @@ rollback() {
   if test -d "$previous"; then mv "$previous" "$target"; fi
   if docker image inspect "$rollback_image" >/dev/null 2>&1; then docker image tag "$rollback_image" "$image"; fi
   docker compose -p "$project" -f "$target/deploy/compose.yaml" up -d --no-deps --force-recreate --wait --wait-timeout 240 studio || true
+  docker image rm "$rollback_image" >/dev/null 2>&1 || true
   exit 1
 }
 
@@ -72,4 +75,3 @@ docker compose -p "$project" -f "$target/deploy/compose.yaml" exec -T studio nod
 docker image rm "$rollback_image" >/dev/null 2>&1 || true
 printf '%s revision=%s image=%s volume=%s\n' "$(date -u +%FT%TZ)" "$revision" "$(docker image inspect "$image" --format '{{.Id}}')" "$after_volume" >> /var/log/obs-companion-deployments.log
 echo "OBS Companion deployed revision $revision"
-
