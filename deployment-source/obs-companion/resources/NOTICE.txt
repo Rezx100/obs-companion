@@ -1,6 +1,0 @@
-OBS Companion is independent of OBS Project. OBS Studio is not bundled.
-Electron: MIT, with Chromium/third-party notices in the installed application.
-React, React DOM, obs-websocket-js: MIT. Playwright: Apache-2.0.
-Bundled Playwright FFmpeg helper: LGPL-2.1-or-later; used for browser evidence recording only. The helper distribution includes its license. Upstream build/source instructions: https://github.com/microsoft/playwright/tree/main/browser_patches/ffmpeg
-User-supplied FFmpeg/FFprobe are separate executables for local editing; their license depends on the selected distribution. No user-supplied executable is redistributed in this installer.
-See docs/DEPENDENCIES.json for installed runtime dependencies and their declared licenses. Development-only browser/test/build packages are excluded from the installer.
