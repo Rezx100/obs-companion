@@ -1,5 +1,11 @@
 # OBS Companion progress
 
+## Website capture result and preview — 25 September 2026
+
+A Windows preview user reported that after a website capture, the video, narration state, saved location and next action were unclear, with no live visual feedback. The follow-up branch adds a result panel above scope settings, playable output or original evidence, explicit AI narration and analysis status, direct Save video dialogs, per-viewport Save actions, and a distinct project-backup label. During capture, completed JPEG frames update the result panel as a live still-frame preview; this is not a real-time video stream. Rendered outputs record their processing action so the UI claims narration inclusion only for narrated or voice-replacement renders. Previous outputs without provenance are marked unverified.
+
+Local source verification: JSX transpiled with esbuild 0.28.2; `node --check` passed for the transformed UI and changed CommonJS files. The Save dialog was not exercised on Windows and no new installer was built. PR #6 targets the rebrand branch; the current GitHub workflow triggers PR validation only for `main`, so this stacked PR has no CI result until it is integrated into a main-targeting change.
+
 ## Windows signing gate — 25 September 2026
 
 The distributed Vistralo preview produces the SmartScreen **Unknown publisher** warning because the installer and executable are unsigned. Added `scripts/Build-SignedRelease.ps1`: a Windows-only, fail-closed path that requires a trusted code-signing certificate identifying Dynamix LTD, timestamps and verifies all packaged Windows binaries and the installer, and recomputes the signed artifact checksum. The NSIS license now starts with Vistralo/Dynamix attribution and retains the original OBS Companion contributor copyright. No certificate or Windows signing host is available in this workspace; this is **not** a signed deliverable or a completed Windows install test. Signed downloads and native acceptance are pending. The unpublished privacy/terms drafts and separate data-practice gates remain pending as well.
