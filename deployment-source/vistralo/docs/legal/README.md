@@ -20,7 +20,7 @@ There is no account system for 500 separate users in this version: the studio us
 
 ## Decisions required before publication
 
-1. Legal operator name, registration and postal address; privacy/support email; role as controller or processor for each data set; age/audience; whether service is sold to US, EEA or UK residents.
+1. Operator name and address supplied as **Dynamix LDT**, **Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor**; confirm exact registered spelling, registration details, full postal jurisdiction and privacy/support email; role as controller or processor for each data set; age/audience; whether service is sold to US, EEA or UK residents.
 2. Hosting and backup countries; exact retention/deletion schedule for projects, uploads, sessions, logs, backups and provider data; rights request identity-check and response workflow.
 3. OpenAI/HeyGen and host contracts, subprocessors, international transfer safeguards, and whether EU and UK representatives or a DPO are required.
 4. Whether California CCPA/CPRA applies to the operator and whether data is sold/shared; other US state thresholds and rights if public service expands.

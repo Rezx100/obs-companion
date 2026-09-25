@@ -1,14 +1,14 @@
 # Vistralo privacy notice — DRAFT, NOT PUBLISHED
 
-Effective date: `{{EFFECTIVE_DATE}}` · Operator: `{{LEGAL_NAME}}` · Address: `{{POSTAL_ADDRESS}}` · Privacy contact: `{{PRIVACY_EMAIL}}`
+Effective date: `{{EFFECTIVE_DATE}}` · Operator: Dynamix LDT · Address: Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor · Privacy contact: `{{PRIVACY_EMAIL}}`
 
-This draft describes the current local desktop application and single-operator browser studio. It must be verified against the deployed service before publication. `{{LEGAL_NAME}}` must identify when it acts as controller for account/operational data and when it processes customer recordings on a customer's instructions. If the product remains personal/self-hosted software, rewrite this notice to reflect that deployment model.
+This draft describes the current local desktop application and single-operator browser studio. It must be verified against the deployed service before publication. Dynamix LDT must identify when it acts as controller for account/operational data and when it processes customer recordings on a customer's instructions. If the product remains personal/self-hosted software, rewrite this notice to reflect that deployment model.
 
 ## What Vistralo handles
 
 The desktop stores project names, recordings, audio, screenshots, captured website measurements, edit plans, job records and exports on the user's computer. Provider API credentials are stored separately using the operating system's protected storage on the same Windows account. The server studio stores uploaded media and projects on its private server volume, including partial uploads for resume. A capture can incidentally include people, voices, page text, account details or other personal information visible in a recording. The customer chooses what to record and upload.
 
-The browser studio uses a required authentication session cookie and local browser storage for an upload resume reference. At login, the server issues a session ID that normally expires in 12 hours; sessions are held in server memory and end after a server restart. The upload reference contains an upload ID associated with project, media kind and file checksum. `{{OPERATOR}}` must inventory actual web/server access logs before stating what IP addresses, device details or diagnostics it retains.
+The browser studio uses a required authentication session cookie and local browser storage for an upload resume reference. At login, the server issues a session ID that normally expires in 12 hours; sessions are held in server memory and end after a server restart. The upload reference contains an upload ID associated with project, media kind and file checksum. Dynamix LDT must inventory actual web/server access logs before stating what IP addresses, device details or diagnostics it retains.
 
 ## Purposes and legal basis — complete after operator review
 
@@ -32,4 +32,4 @@ Define actual deletion periods for complete and incomplete uploads, recordings, 
 
 People may have rights to access, correct, erase, restrict, object, port data or withdraw consent depending on their location and applicable legal basis. Send requests to `{{PRIVACY_EMAIL}}`; describe verification, response time and any customer-controller routing at `{{RIGHTS_PROCESS}}`. EEA users can complain to a relevant data protection authority; UK users can complain to the ICO. Add California and other applicable US state rights, appeal/opt-out methods and notices after applicability and actual practices are confirmed. Do not imply a “Do Not Sell or Share” mechanism exists when it has not been implemented.
 
-Contact: `{{LEGAL_NAME_AND_CONTACT}}`. Material changes: `{{NOTICE_CHANGE_PROCESS}}`.
+Contact: Dynamix LDT, Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor; email `{{PRIVACY_EMAIL}}`. Material changes: `{{NOTICE_CHANGE_PROCESS}}`.
