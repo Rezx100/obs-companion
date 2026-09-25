@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+node_modules/
+deployment-source/obs-companion/dist/
+deployment-source/obs-companion/deploy/runtime.env
+*.local
+.env
+*.key
+obs-companion-deploy.tar.gz
+

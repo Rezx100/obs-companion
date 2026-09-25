@@ -1,0 +1,1 @@
+Server HTTP capture acceptance passed

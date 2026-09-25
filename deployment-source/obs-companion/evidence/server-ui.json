@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "at": "2026-09-25T04:53:36.006Z",
+  "checks": [
+    "real HTTP login",
+    "project creation",
+    "browser hash worker upload",
+    "source SHA-256 preservation",
+    "server FFmpeg render",
+    "desktop/mobile UI",
+    "no horizontal overflow",
+    "no browser exceptions",
+    "multi-chunk browser SHA-256 matches Node"
+  ],
+  "output": {
+    "file": "exports/edited-57064d66.mp4",
+    "sha256": "0a0ac7da3380c28814b7f94cd5f78d63113c36174d3c6fdadf120f398e3b2dfc",
+    "duration": 1,
+    "streams": [
+      {
+        "codec_type": "video",
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360
+      }
+    ]
+  },
+  "boundary": "Local Linux HTTP server and real Chromium/FFmpeg. Not the supplied Ubuntu server, Docker, OBS native capture or Windows devices."
+}

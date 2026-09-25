@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "desktopDisplay": "flex",
+  "mobileDisplay": "block",
+  "reducedMotionDuration": "0.001s",
+  "keyboardAccordion": "opened with Enter",
+  "stickyHeaderTopPx": 0,
+  "scrollReset": "matrix(1, 0, 0, 1, 0, 0)",
+  "limitation": "Deterministic fixture only"
+}

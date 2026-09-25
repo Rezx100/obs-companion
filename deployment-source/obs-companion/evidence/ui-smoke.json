@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "screens": [
+    "Projects",
+    "Record myself",
+    "Settings"
+  ],
+  "assertions": [
+    "real project created through Service",
+    "no renderer exceptions"
+  ],
+  "boundary": "Real Chromium UI + local service harness; Electron IPC and Windows DPAPI not exercised"
+}

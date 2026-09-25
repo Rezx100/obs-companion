@@ -1,0 +1,98 @@
+name: Agentic CI/CD
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: obs-companion-production
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+    working-directory: deployment-source/obs-companion
+
+jobs:
+  validate:
+    name: Validate source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out reviewed revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Install Node.js 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.19.0
+          cache: npm
+          cache-dependency-path: deployment-source/obs-companion/package-lock.json
+
+      - name: Install FFmpeg and locked dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          npm ci --ignore-scripts
+
+      - name: Test, build, audit, and validate deployment
+        run: |
+          npm test
+          npm run build
+          npm run build:server
+          npm audit --omit=dev
+          docker compose -f deploy/compose.yaml config --quiet
+          node --check deploy/entrypoint.cjs
+          node --check deploy/healthcheck.cjs
+          node --check deploy/wait-for-obs.cjs
+          bash -n deploy/github-deploy.sh
+
+  deploy:
+    name: Deploy production
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    environment: production
+    steps:
+      - name: Check out validated revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Configure restricted deployment identity
+        env:
+          DEPLOY_KEY: ${{ secrets.VPS_DEPLOY_KEY }}
+          KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          install -d -m 0700 "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_KEY" > "$HOME/.ssh/obs-companion-deploy"
+          printf '%s\n' "$KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 0600 "$HOME/.ssh/obs-companion-deploy" "$HOME/.ssh/known_hosts"
+        working-directory: .
+
+      - name: Stream reviewed source to the VPS deploy command
+        env:
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_PORT: ${{ vars.VPS_PORT }}
+        run: |
+          test -n "$VPS_HOST"
+          test -n "$VPS_PORT"
+          printf '%s\n' "$GITHUB_SHA" > .deploy-revision
+          tar \
+            --exclude='./node_modules' \
+            --exclude='./deploy/runtime.env' \
+            --exclude='./dist' \
+            -czf - . | ssh \
+              -T \
+              -p "$VPS_PORT" \
+              -i "$HOME/.ssh/obs-companion-deploy" \
+              -o BatchMode=yes \
+              -o IdentitiesOnly=yes \
+              -o StrictHostKeyChecking=yes \
+              "root@$VPS_HOST"
+

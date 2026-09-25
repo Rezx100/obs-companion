@@ -1,0 +1,16 @@
+
+7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=C.UTF-8,Utf16=on,HugeFiles=on,64 bits,9 CPUs AMD EPYC 9V74 80-Core Processor                 (A10F11),ASM,AES-NI)
+
+Scanning the drive for archives:
+1 file, 252552171 bytes (241 MiB)
+
+Testing archive: dist/OBS-Companion-0.1.0-Setup.exe
+ERROR: dist/OBS-Companion-0.1.0-Setup.exe
+Can not open the file as archive
+
+
+Can't open as archive: 1
+Files: 0
+Size:       0
+Compressed: 0

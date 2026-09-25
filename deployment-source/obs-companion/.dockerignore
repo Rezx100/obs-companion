@@ -1,0 +1,15 @@
+**/.env
+**/.env.*
+deploy/runtime.env
+node_modules
+dist
+.git
+.cache
+work
+evidence
+resources
+upload
+deliverables
+*.zip
+*.exe
+**/*.log

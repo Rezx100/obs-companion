@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "fixture": "fixtures/motion-lab.html",
+  "project": "45aa178e-33bd-4d39-96bf-59ea268614c5",
+  "manifest": "work/integration/45aa178e-33bd-4d39-96bf-59ea268614c5/evidence/416e06c2/motion-manifest.json",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "frameCounts": [
+    94,
+    123
+  ],
+  "sampleCounts": [
+    375,
+    430
+  ],
+  "toleranceMs": 35,
+  "measurement": "browser animation event elapsedTime; frame capture timing is NOT asserted to 35ms",
+  "output": {
+    "file": "exports/walkthrough-819d3834.mp4",
+    "sha256": "51da9f1d38b854621c8c0425b271593dad50dd86993f6bc5b3bf7b1f53cd272d",
+    "duration": 14.24,
+    "streams": [
+      {
+        "codec_type": "video",
+        "codec_name": "h264",
+        "width": 1440,
+        "height": 900
+      }
+    ]
+  },
+  "limitations": "Not OBS hardware capture; no paid analysis or narration"
+}

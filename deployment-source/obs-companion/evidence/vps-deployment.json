@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-25",
+  "passed": true,
+  "image": {
+    "name": "obs-companion-server:0.2.0-preview",
+    "acceptedRuntimeId": "sha256:35a1ff1498e889d39f28392917d2161cc2b123a98ca21933f81703dc51b1d773",
+    "finalTagManifestId": "sha256:0fd6da62fc3eb86361f94124292167405cec6c7b58be23470d642f4b33b4d2a5",
+    "configDigest": "sha256:7380737c52a3f9e2ee2d8dc3180eac8f2a0a337432b3599707f7c4fd6a7b6444",
+    "sizeBytes": 5418855901
+  },
+  "versions": {
+    "obsStudio": "32.2.2",
+    "obsWebSocket": "5.7.4",
+    "node": "24.19.0",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "xvfb": "21.1.12-1ubuntu1.8",
+    "supervisor": "4.2.5-1ubuntu0.1",
+    "pulseaudio": "16.1+dfsg1-2ubuntu10.1",
+    "playwright": "1.58.2"
+  },
+  "obsUpstreamDebSha256": "b6557ca2059287210332accc94c267094050489cffffc5c832e746e3a418dab0",
+  "health": {"container": "healthy", "httpStatus": 200, "authenticatedGetVersion": true},
+  "security": {
+    "httpBinding": "127.0.0.1:8787",
+    "obsWebSocketHostPublished": false,
+    "runtimeEnvMode": "0600",
+    "readOnlyRootFilesystem": true,
+    "capabilitiesDropped": "ALL",
+    "capabilitiesAdded": ["SYS_CHROOT"],
+    "noNewPrivileges": true
+  },
+  "persistentVolume": "/var/lib/docker/volumes/obs-companion_studio-data/_data",
+  "observedPostRestartResources": {"cpuPercent": 129.65, "memory": "297.6 MiB", "limit": "6 GiB", "pids": 77},
+  "productionNpmAuditVulnerabilities": 0,
+  "containerTestSuite": {"tests": 27, "passed": 27, "failed": 0},
+  "secretsExposed": false,
+  "paidProviderCalls": 0
+}

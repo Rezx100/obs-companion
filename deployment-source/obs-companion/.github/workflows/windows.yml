@@ -1,0 +1,35 @@
+name: Windows build and local media tests
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install local test/build tools
+        shell: pwsh
+        run: |
+          choco install ffmpeg nsis -y --no-progress
+          "C:\ProgramData\chocolatey\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - run: npm ci
+      - run: npm test
+      - run: npm run package:win
+      - name: Compile installer
+        shell: pwsh
+        run: |
+          $env:MAKENSIS = 'C:\Program Files (x86)\NSIS\makensis.exe'
+          npm run installer:custom
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OBS-Companion-Windows-unsigned
+          path: |
+            dist/OBS-Companion-0.1.0-Setup.exe
+            dist/OBS-Companion-0.1.0-Setup.exe.sha256
+# This workflow is provided but has not run: no remote repository was supplied.
+# It does not replace manual OBS/device/long-duration acceptance.

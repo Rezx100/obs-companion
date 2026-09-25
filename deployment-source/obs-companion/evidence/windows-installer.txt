@@ -1,0 +1,24 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> obs-companion@0.1.0 installer:custom
+> node scripts/build-installer.cjs
+
+Processing script file: "installer.nsi" (UTF8)
+
+Processed 1 file, writing output (x86-unicode):
+
+Output: "/workspace/scratch/7dbacd395618/obs-companion/dist/OBS-Companion-0.1.0-Setup.exe"
+Install: 5 pages (320 bytes), 1 section (32792 bytes), 1128 instructions (31584 bytes), 4327 strings (35350 bytes), 1 language table (322 bytes).
+Uninstall: 2 pages (192 bytes), 1 section (32792 bytes), 734 instructions (20552 bytes), 5707 strings (110452 bytes), 1 language table (250 bytes).
+Datablock optimizer saved 134687 bytes (~0.0%).
+
+Using zlib (compress whole) compression.
+
+EXE header size:               57856 / 39424 bytes
+Install code:                          (84448 bytes)
+Install data:                          (590877229 bytes)
+Uninstall code+data:                   (162218 bytes)
+Compressed data:           246291381 / 591123895 bytes
+CRC (0xE255CC5C):                  4 / 4 bytes
+
+Total size:                246349241 / 591163323 bytes (41.6%)

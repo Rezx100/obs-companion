@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "source": "Synthetic 3840×1080 atlas, two distinct solid-color 1920×1080 sources and one tone",
+  "sourceHash": "a043630bb2f9845155be89d6558df292509a2c5b163ef6256558a4c0c14ca357",
+  "outputs": {
+    "screen": {
+      "file": "exports/screen-9155a67b.mp4",
+      "sha256": "37f9bbe719d807fdc1677195639605f325d81a665f4ae783f72fc74e11652e42",
+      "duration": 2.033333,
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_type": "audio",
+          "codec_name": "aac"
+        }
+      ]
+    },
+    "camera": {
+      "file": "exports/camera-3207880f.mp4",
+      "sha256": "95e2524549b4f6aa58a7158f9b273af64638781dd17c6c34556050dcd21f672c",
+      "duration": 2.033333,
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "codec_type": "audio",
+          "codec_name": "aac"
+        }
+      ]
+    }
+  },
+  "durationDifference": 0,
+  "limitation": "FFmpeg extraction only. Does not prove OBS source capture, microphone routing or hardware drift."
+}

@@ -1,0 +1,23 @@
+{
+  "installer": "OBS-Companion-0.1.0-Setup.exe",
+  "bytes": 246349241,
+  "sha256": "a478534860746a26f53c57b2aef3491a150cda838dd74620c9381d5d86cdbf06",
+  "peHeaderValid": true,
+  "nsisHeaderOffset": 57856,
+  "nsisHeaderSize": 84420,
+  "deflateBytesVerified": 590985170,
+  "crc32Valid": true,
+  "crcStart": 512,
+  "embeddedChecks": [
+    {
+      "file": "resources/app.asar",
+      "sha256": "d2201f1794a8c3d62306ae3b86158fe00136ca9572ad74d7027efc4f92400a4b"
+    },
+    {
+      "file": "resources/browsers/ffmpeg-1011/ffmpeg-win64.exe",
+      "sha256": "5b8f3f59ba61685828939ff3c833109748adbdea2fff4b4ae570c9fc0fc1ff4d"
+    }
+  ],
+  "signed": false,
+  "windowsExecuted": false
+}

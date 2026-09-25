@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "transport": "real stdio subprocess",
+  "client": "@modelcontextprotocol/sdk 1.26.0",
+  "project": "0b12162c-c715-40f6-ab56-4ea010887141",
+  "tools": [
+    "list_projects",
+    "read_project",
+    "read_evidence",
+    "submit_edit_plan",
+    "render",
+    "get_output",
+    "cancel"
+  ],
+  "output": {
+    "file": "exports/edited-241f72e4.mp4",
+    "sha256": "90bd4186cdba2807388255be40bc8b4ca7348bee4586163ebdd58846ebb81187",
+    "duration": 1,
+    "streams": [
+      {
+        "codec_type": "video",
+        "codec_name": "h264",
+        "width": 320,
+        "height": 180
+      }
+    ]
+  },
+  "limitation": "SDK client verified; a named GUI desktop client and installed Windows executable remain untested"
+}

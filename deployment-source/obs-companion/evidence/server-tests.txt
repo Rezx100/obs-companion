@@ -1,0 +1,40 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> obs-companion@0.1.0 test
+> node --test tests/*.test.cjs
+
+✔ projects persist and restart marks active work interrupted (3.840895ms)
+✔ path traversal, absolute paths, ADS and symlink escape are rejected (0.553136ms)
+✔ invalid and overlapping edit ranges rejected (0.485536ms)
+✔ disk-full preflight has actionable error (0.485116ms)
+✔ private addresses need explicit origin consent (1.574302ms)
+✔ paid requests require cap, approval and estimate (1.462097ms)
+✔ ambiguous paid timeout never allows duplicate submission (2.371248ms)
+✔ restart preserves paid uncertainty (1.488596ms)
+✔ provider HTTP failure is recorded without raw response (2.193696ms)
+✔ exact Boya voice is fixed and never substituted (0.272241ms)
+✔ FFmpeg integration trims picture and audio and preserves original (431.929347ms)
+✔ FFmpeg cancellation preserves an existing output (101.148759ms)
+✔ word-timed cleanup proposes reviewable cuts and rejects invalid timestamps (1.021136ms)
+✔ narrated composition renders MP4 plus segment captions with an explicit hold (1255.354201ms)
+✔ zero-budget paid request cannot bypass approval (1.204006ms)
+✔ project export is secret-free, resumable and refuses recursive destination (19.861486ms)
+✔ imported paid job history retains duplicate protection (3.249412ms)
+✔ recording state cannot be replaced by editing, imports or background processing (1.412293ms)
+✔ SQLite claims prevent a second process from replacing active recording state (1.120333ms)
+✔ OBS contract: owned record pause/resume stop journals state (13.719397ms)
+✔ OBS contract: disconnect cannot become successful completion (2.822283ms)
+✔ Linux OBS contract records server display, hashes master and preserves incomplete capture on ambiguous stop (mock OBS) (181.148129ms)
+✔ Linux OBS contract refuses an already active recorder (mock OBS) (2.382033ms)
+✔ server requires authentication, validates origins/hosts, expires session on logout and hides secrets (51.144568ms)
+✔ resumable upload survives restart, verifies digest, rejects stale offsets, and completes idempotently (31.052242ms)
+✔ real server upload → edit → FFmpeg render → range download preserves the original (364.011869ms)
+✔ server blocks private capture and egress proxy resolves to a checked public address (4.324148ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2193.893818

@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-25",
+  "passed": true,
+  "project": "384ac4f0-bf5d-4cc7-bbb8-014af98b45cf",
+  "interruption": "container restart during active OBS recording",
+  "interruptedState": "Interrupted",
+  "recoveredState": "Needs Review",
+  "recordingActiveAfterRestart": false,
+  "recordingActiveAfterRecovery": false,
+  "master": "masters/2026-09-25 07-02-12.mkv",
+  "sha256": "7b0b6eb5715598c44ffb1cb5fbcd1462d852225cae0662aceef494faeb053aaa",
+  "recoveredFiles": 1,
+  "durationSeconds": 4.266,
+  "video": {"codec": "h264", "width": 1920, "height": 1080, "frameRate": "30/1"},
+  "postTestHealth": "healthy"
+}

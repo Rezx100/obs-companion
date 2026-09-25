@@ -1,0 +1,44 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> obs-companion@0.1.0 dist:win
+> npm run build && electron-builder --win nsis --x64
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> obs-companion@0.1.0 build
+> esbuild ui/app.jsx --bundle --minify --define:process.env.NODE_ENV="\"production\"" --outfile=ui/app.js --loader:.jsx=jsx
+
+
+  ui/app.js  212.4kb
+
+⚡ Done in 29ms
+  • electron-builder  version=26.8.1 os=6.18.44
+  • loaded configuration  file=package.json ("build" field)
+  • executing @electron/rebuild  electronVersion=44.4.5 arch=x64 buildFromSource=false workspaceRoot=/workspace/scratch/7dbacd395618/obs-companion projectDir=./ appDir=./
+  • installing native dependencies  arch=x64
+  • completed installing native dependencies
+  • packaging       platform=win32 arch=x64 electron=44.4.5 appOutDir=dist/win-unpacked
+  • downloading     url=https://github.com/electron/electron/releases/download/v44.4.5/electron-v44.4.5-win32-x64.zip size=158 MB parts=8
+  • downloaded      url=https://github.com/electron/electron/releases/download/v44.4.5/electron-v44.4.5-win32-x64.zip duration=37.493s
+  • searching for node modules  pm=npm searchDir=/workspace/scratch/7dbacd395618/obs-companion
+(node:58) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  • updating asar integrity executable resource  executablePath=dist/win-unpacked/OBS Companion.exe
+  • building        target=nsis file=dist/OBS-Companion-0.1.0-Setup.exe archs=x64 oneClick=false perMachine=false
+  • default Electron icon is used  reason=application icon is not set
+  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-3.0.4.1/nsis-3.0.4.1.7z size=1.3 MB parts=1
+  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-3.0.4.1/nsis-3.0.4.1.7z duration=33.453s
+  • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-resources-3.4.1/nsis-resources-3.4.1.7z size=731 kB parts=1
+  • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-resources-3.4.1/nsis-resources-3.4.1.7z duration=33.929s
+  ⨯ wine is required, please see https://electron.build/multi-platform-build#linux  
+  ⨯ /workspace/scratch/7dbacd395618/obs-companion/node_modules/builder-util/node_modules/app-builder-bin/linux/x64/app-builder process failed ERR_ELECTRON_BUILDER_CANNOT_EXECUTE
+Exit code:
+1  failedTask=build stackTrace=Error: /workspace/scratch/7dbacd395618/obs-companion/node_modules/builder-util/node_modules/app-builder-bin/linux/x64/app-builder process failed ERR_ELECTRON_BUILDER_CANNOT_EXECUTE
+Exit code:
+1
+    at ChildProcess.<anonymous> (/workspace/scratch/7dbacd395618/obs-companion/node_modules/builder-util/src/util.ts:272:14)
+    at Object.onceWrapper (node:events:631:26)
+    at ChildProcess.emit (node:events:509:28)
+    at ChildProcess.emit (node:domain:489:12)
+    at maybeClose (node:internal/child_process:1141:16)
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:306:5)

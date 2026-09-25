@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-25",
+  "passed": true,
+  "project": "3d6b50bd-79f1-4373-b39d-67ca7bd1964f",
+  "publicUrl": "https://example.com/",
+  "master": {
+    "file": "masters/2026-09-25 06-54-05.mkv",
+    "bytes": 4356454,
+    "sha256": "798c5a036b0d8f6cd4e0b2f953bd36212ef08a25dcd7ea3bfbb83de92a647a56",
+    "durationSeconds": 5.9,
+    "video": {"codec": "h264", "width": 1920, "height": 1080, "frameRate": "30/1"},
+    "audio": {"codec": "aac", "channels": 2},
+    "authenticatedDownloadChecksumMatched": true
+  },
+  "evidence": {"sessions": 1, "frames": 37},
+  "render": {
+    "file": "exports/edited-c6a389de.mp4",
+    "bytes": 110991,
+    "durationSeconds": 2,
+    "sha256": "6facf7dddc8bb94e05eb10bafc2576f6f83280fcd2007f3c7a4bd340d79ff867",
+    "authenticatedDownloadChecksumMatched": true
+  },
+  "mcp": {
+    "server": "obs-companion-server",
+    "version": "0.2.0-preview",
+    "tools": ["list_projects", "read_project", "read_evidence", "submit_edit_plan", "render", "get_output", "cancel"]
+  },
+  "paidProviderCalls": 0
+}

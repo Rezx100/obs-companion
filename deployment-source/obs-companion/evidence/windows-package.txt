@@ -1,0 +1,24 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> obs-companion@0.1.0 package:win
+> npm run build && electron-builder --win --dir --x64
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> obs-companion@0.1.0 build
+> esbuild ui/app.jsx --bundle --minify --define:process.env.NODE_ENV="\"production\"" --outfile=ui/app.js --loader:.jsx=jsx
+
+
+  ui/app.js  214.1kb
+
+⚡ Done in 31ms
+  • electron-builder  version=26.8.1 os=6.18.44
+  • loaded configuration  file=package.json ("build" field)
+  • executing @electron/rebuild  electronVersion=44.4.5 arch=x64 buildFromSource=false workspaceRoot=/workspace/scratch/7dbacd395618/obs-companion projectDir=./ appDir=./
+  • installing native dependencies  arch=x64
+  • completed installing native dependencies
+  • packaging       platform=win32 arch=x64 electron=44.4.5 appOutDir=dist/win-unpacked
+  • searching for node modules  pm=npm searchDir=/workspace/scratch/7dbacd395618/obs-companion
+(node:48) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  • updating asar integrity executable resource  executablePath=dist/win-unpacked/OBS Companion.exe

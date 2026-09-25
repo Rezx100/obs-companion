@@ -1,0 +1,9 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> obs-companion@0.1.0 build
+> esbuild ui/app.jsx --bundle --minify --define:process.env.NODE_ENV="\"production\"" --outfile=ui/app.js --loader:.jsx=jsx
+
+
+  ui/app.js  214.1kb
+
+⚡ Done in 31ms

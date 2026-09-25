@@ -1,0 +1,107 @@
+[
+  {
+    "name": "@msgpack/msgpack",
+    "version": "2.8.0",
+    "license": "ISC",
+    "resolved": "https://registry.npmjs.org/@msgpack/msgpack/-/msgpack-2.8.0.tgz",
+    "integrity": "sha512-h9u4u/jiIRKbq25PM+zymTyW6bhTzELvOoUd+AvYriWOAKpLGnIamaET3pnHYoI5iYphAHBI4ayx0MehR+VVPQ=="
+  },
+  {
+    "name": "crypto-js",
+    "version": "4.2.0",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/crypto-js/-/crypto-js-4.2.0.tgz",
+    "integrity": "sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q=="
+  },
+  {
+    "name": "debug",
+    "version": "4.4.3",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
+    "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA=="
+  },
+  {
+    "name": "eventemitter3",
+    "version": "5.0.4",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.4.tgz",
+    "integrity": "sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw=="
+  },
+  {
+    "name": "fsevents",
+    "version": "2.3.2",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
+    "integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  },
+  {
+    "name": "isomorphic-ws",
+    "version": "5.0.0",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/isomorphic-ws/-/isomorphic-ws-5.0.0.tgz",
+    "integrity": "sha512-muId7Zzn9ywDsyXgTIafTry2sV3nySZeUDe6YedVd1Hvuuep5AsIlqK+XefWpYTyJG5e503F2xIuT2lcU6rCSw=="
+  },
+  {
+    "name": "ms",
+    "version": "2.1.3",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+    "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
+  },
+  {
+    "name": "obs-websocket-js",
+    "version": "5.0.6",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/obs-websocket-js/-/obs-websocket-js-5.0.6.tgz",
+    "integrity": "sha512-tHRq8py1XrdlMhSV+N/KTGHqoRIcsBBXbjcA9ex21k128iQ7YXjxzNWs3s9gidP1tEcIyVuJu8FnPgrSBWGm0Q=="
+  },
+  {
+    "name": "playwright",
+    "version": "1.58.2",
+    "license": "Apache-2.0",
+    "resolved": "https://registry.npmjs.org/playwright/-/playwright-1.58.2.tgz",
+    "integrity": "sha512-vA30H8Nvkq/cPBnNw4Q8TWz1EJyqgpuinBcHET0YVJVFldr8JDNiU9LaWAE1KqSkRYazuaBhTpB5ZzShOezQ6A=="
+  },
+  {
+    "name": "playwright-core",
+    "version": "1.58.2",
+    "license": "Apache-2.0",
+    "resolved": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.58.2.tgz",
+    "integrity": "sha512-yZkEtftgwS8CsfYo7nm0KE8jsvm6i/PTgVtB8DL726wNf6H2IMsDuxCpJj59KDaxCtSnrWan2AeDqM7JBaultg=="
+  },
+  {
+    "name": "react",
+    "version": "19.2.4",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/react/-/react-19.2.4.tgz",
+    "integrity": "sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ=="
+  },
+  {
+    "name": "react-dom",
+    "version": "19.2.4",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.2.4.tgz",
+    "integrity": "sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ=="
+  },
+  {
+    "name": "scheduler",
+    "version": "0.27.0",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz",
+    "integrity": "sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q=="
+  },
+  {
+    "name": "type-fest",
+    "version": "3.13.1",
+    "license": "(MIT OR CC0-1.0)",
+    "resolved": "https://registry.npmjs.org/type-fest/-/type-fest-3.13.1.tgz",
+    "integrity": "sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g=="
+  },
+  {
+    "name": "ws",
+    "version": "8.21.3",
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/ws/-/ws-8.21.3.tgz",
+    "integrity": "sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw=="
+  }
+]

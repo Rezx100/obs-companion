@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "file": "src/core.cjs",
+      "sha256": "90dbe9e3ba8cbc8cc2944cbd7213bde20bb86e771b920839d7e5b4ed87c8c8cd"
+    },
+    {
+      "file": "src/editor.cjs",
+      "sha256": "d390ba79011680b7540a9ba2ad8a6cea19cfc39b382324af8502c43eaed85756"
+    },
+    {
+      "file": "src/main.cjs",
+      "sha256": "5def32362b189ec35c8abffc3808f03986e786677c95fd728d7e167729e906a8"
+    },
+    {
+      "file": "src/mcp.cjs",
+      "sha256": "f3733da7c9c334ed279e095547a0327990c7811160171d1d876c402d01650da0"
+    },
+    {
+      "file": "src/media.cjs",
+      "sha256": "0034a755007f3a0398667a6c645ebab807928b9490c432ef521781a9c85167b3"
+    },
+    {
+      "file": "src/obs.cjs",
+      "sha256": "cf4ce35226519a9a21b50e5230b709f7f362fb84226da67dc09fa79a8dd54654"
+    },
+    {
+      "file": "src/preload.cjs",
+      "sha256": "663de89ebef2c045f51849e2a6875d014a74e10c6384a5d9bd89f6d55e1350c2"
+    },
+    {
+      "file": "src/providers.cjs",
+      "sha256": "4aceade53bec65c169d054cb59492fb49849e69785dfe9f477ad3f1fccecfecb"
+    },
+    {
+      "file": "src/service.cjs",
+      "sha256": "bb687dfd97927948c38db8619fc3f05fc21de5e583a6bc937fb376d600c9ae60"
+    },
+    {
+      "file": "src/walkthrough.cjs",
+      "sha256": "9f54ae47552896c40c7e2cb6355ca3445c368ab699e921b2a8d8ae86f8d3ef85"
+    },
+    {
+      "file": "ui/app.js",
+      "sha256": "6815979b9348f138a197df436971420d181f5a78bd798c78a96693c2179c569f"
+    },
+    {
+      "file": "ui/style.css",
+      "sha256": "4b5c2a1d879602a91c2b1ffecb7fc872fb77910fa580b11bb03d2761c55ed00b"
+    },
+    {
+      "file": "ui/index.html",
+      "sha256": "84715bfc0f9e845b48d0e63eba0ee784647a912d047974ecbd50cdc0426cce8c"
+    }
+  ],
+  "packageMetadata": "Runtime name/version/main/dependencies match. Builder removes development fields as expected."
+}

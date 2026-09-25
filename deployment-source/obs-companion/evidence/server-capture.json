@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "at": "2026-09-25T04:54:44.666Z",
+  "checks": [
+    "authenticated async HTTP capture",
+    "capture continues after start request returns",
+    "single active job enforced",
+    "real Chromium fixture capture",
+    "evidence manifest and video downloadable"
+  ],
+  "frames": 80,
+  "project": "f878176f-c7f1-4b6e-a13f-71580fa25bc6",
+  "boundary": "Local deterministic fixture; private fixture origin allowed only through test dependency injection. Production rejects this origin. Not a public-site, supplied-server, native OBS or hardware pass."
+}

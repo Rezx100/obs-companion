@@ -1,0 +1,10 @@
+{
+  "at": "2026-09-25T04:55:37.988209+00:00",
+  "destination": "user-supplied server; address omitted",
+  "serverOS": "Ubuntu 24 (user supplied, not independently verified)",
+  "authenticationAttempted": false,
+  "serverChanged": false,
+  "tcpReachable": false,
+  "errorCode": 101,
+  "error": "[Errno 101] Network is unreachable"
+}

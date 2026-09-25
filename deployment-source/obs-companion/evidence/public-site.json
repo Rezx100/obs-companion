@@ -1,0 +1,10 @@
+{
+  "attemptedAt": "2026-09-25",
+  "url": "https://mercury.com/",
+  "status": "blocked",
+  "stage": "preflight DNS lookup",
+  "error": "getaddrinfo EAI_AGAIN mercury.com",
+  "footageCaptured": false,
+  "narrationGenerated": false,
+  "qualityGate": "pending; no public-site capture or narrated-quality pass claimed"
+}
