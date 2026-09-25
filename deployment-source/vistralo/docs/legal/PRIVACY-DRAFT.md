@@ -1,6 +1,6 @@
 # Vistralo privacy notice — DRAFT, NOT PUBLISHED
 
-Effective date: `{{EFFECTIVE_DATE}}` · Operator: Dynamix LTD · Address: Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor, Bangladesh · Privacy contact: `{{PRIVACY_EMAIL}}`
+Effective date: `{{EFFECTIVE_DATE}}` · Operator: Dynamix LTD · Address: Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor, Dhaka 1216, Bangladesh · Website: https://vistralo.com · Privacy contact: contact@vistralo.com
 
 This draft describes the current local desktop application and single-operator browser studio. It must be verified against the deployed service before publication. Dynamix LTD must identify when it acts as controller for account/operational data and when it processes customer recordings on a customer's instructions. If the product remains personal/self-hosted software, rewrite this notice to reflect that deployment model.
 
@@ -30,6 +30,6 @@ Server hosting and backups: `{{HOST_AND_BACKUP_SUBPROCESSORS_COUNTRIES}}`. Optio
 
 Define actual deletion periods for complete and incomplete uploads, recordings, outputs, session records, logs and backups. Explain whether deleting a project removes all replicas and when a backup ages out: `{{DELETION_AND_BACKUP_POLICY}}`. The current server uses a private volume and loopback-only HTTP accessed over an SSH tunnel; do not claim end-to-end encryption or independently restorable backups without verification. The desktop vault uses Electron safeStorage on Windows, while recordings and project files are separate from that vault.
 
-People may have rights to access, correct, erase, restrict, object, port data or withdraw consent depending on their location and applicable legal basis. Send requests to `{{PRIVACY_EMAIL}}`; describe verification, response time and any customer-controller routing at `{{RIGHTS_PROCESS}}`. EEA users can complain to a relevant data protection authority; UK users can complain to the ICO. Add California and other applicable US state rights, appeal/opt-out methods and notices after applicability and actual practices are confirmed. Do not imply a “Do Not Sell or Share” mechanism exists when it has not been implemented.
+People may have rights to access, correct, erase, restrict, object, port data or withdraw consent depending on their location and applicable legal basis. Send requests to `contact@vistralo.com`; describe verification, response time and any customer-controller routing at `{{RIGHTS_PROCESS}}`. EEA users can complain to a relevant data protection authority; UK users can complain to the ICO. Add California and other applicable US state rights, appeal/opt-out methods and notices after applicability and actual practices are confirmed. Do not imply a “Do Not Sell or Share” mechanism exists when it has not been implemented.
 
-Contact: Dynamix LTD, Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor, Bangladesh; email `{{PRIVACY_EMAIL}}`. Material changes: `{{NOTICE_CHANGE_PROCESS}}`.
+Contact: Dynamix LTD, Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor, Dhaka 1216, Bangladesh; email `contact@vistralo.com`. Material changes: `{{NOTICE_CHANGE_PROCESS}}`.
