@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "at": "2026-09-25T04:56:49.310Z",
+  "at": "2026-09-25T08:17:38.673Z",
   "client": "@modelcontextprotocol/sdk 1.26.0",
   "transport": "real stdio child → authenticated HTTP → single server scheduler",
   "tools": [
@@ -13,8 +13,8 @@
     "cancel"
   ],
   "output": {
-    "file": "exports/edited-6ce00f3d.mp4",
-    "sha256": "5f9216a26aefb77044ab7f6fa7cd46328ed069e559db4fc456b86dfb04c72e36",
+    "file": "exports/edited-ad1be5c9.mp4",
+    "sha256": "e1b0a967f87168ec1ebb706e92199a01bb4b80a73be868541d00aec01c13a4b3",
     "duration": 1,
     "streams": [
       {
@@ -25,5 +25,5 @@
       }
     ]
   },
-  "boundary": "Local Linux test. SSH transport, supplied host and named GUI client not verified."
+  "boundary": "Local win32 test. SSH transport, supplied host and named GUI client not verified."
 }

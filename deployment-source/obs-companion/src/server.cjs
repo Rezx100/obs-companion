@@ -43,7 +43,7 @@ function createServer({root, token, origins = ['http://127.0.0.1:8787', 'http://
     service.store.get(id);
     assert(!active, 'The server is processing another job; wait for it to finish');
     disk(service.store.root, Number(env.FREE_DISK_FLOOR_BYTES) || 5 * 1024 ** 3);
-    const job = {id: crypto.randomUUID(), project: id, label, started: new Date().toISOString()};
+    const job = {id: crypto.randomUUID(), project: id, label, started: new Date().toISOString(), cancellable:true};
     active = job;
     service.store.event(id, 'server-job-start', job);
     // Request completion never depends on a browser keeping its connection open.
@@ -88,7 +88,7 @@ function createServer({root, token, origins = ['http://127.0.0.1:8787', 'http://
     uploadStatus: a => uploads.public(a.upload),
     uploadComplete: async a => {
       assert(!active, 'Wait for the active server job before importing');
-      active = {id:a.upload,project:uploads.get(a.upload).project,label:'Verifying upload'};
+      active = {id:a.upload,project:uploads.get(a.upload).project,label:'Verifying upload',cancellable:false};
       try {return await uploads.complete(a.upload);} finally {active=null;}
     },
     uploadRemove: a => uploads.remove(a.upload)

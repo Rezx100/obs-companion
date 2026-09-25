@@ -22,13 +22,18 @@ async function refresh(){
   const info=await rpc('project',{id:selected}),p=info.project;
   $('project-name').textContent=p.name;$('project-state').textContent=p.state;$('website').hidden=p.mode!=='walkthrough';
   $('job-state').textContent=(status.active?'Server: '+status.active.label:'Server ready')+(p.data.error?' · '+p.data.error:'');
-  $('cancel').hidden=status.active?.project!==selected;
+  $('cancel').hidden=status.active?.project!==selected||status.active?.cancellable===false;
   $('history').textContent=JSON.stringify({jobs:info.jobs,events:info.events.slice(-12)},null,2);
   const file=p.data.output?.file||p.data.video;
   if(file&&$('preview').getAttribute('src')!==media(file)){$('preview').src=media(file);$('preview').hidden=false;}
   if(!file){$('preview').hidden=true;$('preview').removeAttribute('src');}
   const files=await rpc('files',{id:selected}),signature=JSON.stringify(files);
   if(signature!==lastFiles){lastFiles=signature;$('files').replaceChildren();for(const f of files){const a=document.createElement('a');a.href=media(f.file,true);a.textContent=f.file+' · '+(f.size/1024/1024).toFixed(2)+' MB';$('files').append(a);}}
+  $('render').disabled=!p.data.editPlan;
+  $('remux').disabled=!(p.data.master||p.data.video);
+  $('voice-replace').disabled=!(p.data.narration&&(p.data.output?.file||p.data.video));
+  $('render-segments').disabled=!p.data.narratedPlan;
+  $('recover').hidden=!status.obsAvailable||!['Interrupted','Failed'].includes(p.state)||!files.some(f=>/^masters\/.*\.mkv$/i.test(f.file));
   $('analysis').disabled=!status.credentials.openai;$('speech').disabled=!status.credentials.heygen;
 }
 action('login-form',async()=>{await request('/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:$('token').value})});$('token').value='';message('Connected. Jobs run on the server.');},'submit');

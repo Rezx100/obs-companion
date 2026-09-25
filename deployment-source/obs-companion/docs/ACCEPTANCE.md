@@ -1,5 +1,11 @@
 # OBS Companion 0.1.0 acceptance — 25 September 2026
 
+## Audit remediation addendum
+
+The 25 September security/reliability audit raises the automated suite to **32 passed, 0 failed** and adds real local Windows browser/HTTP/FFmpeg/MCP acceptance. Regression coverage now includes delayed MKV finalization, reused OBS input reattachment, profile-or-collection restoration, reserved/CGNAT URL rejection, truthful job cancellation, imported-video remux, and Windows narrated concat paths. Full and production-only npm audits report zero known vulnerabilities. These results do not replace native live VPS OBS evidence or authorize paid-provider calls.
+
+The audit's architecture verdict, service matrices, cost assumptions, and remaining risks are in `docs/AUDIT-2026-09-25.md`. No Bunny or Cloudflare infrastructure was provisioned. An independently restorable off-site copy remains required before the retained masters can be considered durable against host/volume loss.
+
 **Release status: unsigned Windows preview. The complete handoff is not yet satisfied.** Source, local processing and evidence workflows are implemented and tested as listed below. A built Windows installer is not a Windows runtime, OBS hardware or paid-provider pass.
 
 ## New server migration preview
@@ -8,13 +14,13 @@
 
 | New server gate | Actual result |
 | --- | --- |
-| Automated suite | 27 passed, 0 failed; `evidence/server-tests.txt`. Linux OBS tests use a mock WebSocket client and are not native capture passes. |
+| Automated suite | 32 passed, 0 failed in the audit run. Linux OBS tests use a mock WebSocket client and are not native capture passes. Historical `evidence/server-tests.txt` belongs to the earlier 27-test VPS gate. |
 | Browser studio and real processing | Passed locally: real HTTP authentication, browser checksum worker, upload, edit, FFmpeg render, source preservation, desktop/mobile UI and no renderer exceptions. `evidence/server-ui.json` and screenshots. |
 | Resumable upload | Passed: interrupted transfer survives server restart; stale offsets/checksum mismatch rejected; completion idempotent; originals retained. |
 | Async server website capture | Passed against local deterministic fixture; job survives request completion, second job blocked, real Chromium evidence/video downloadable. `evidence/server-capture.json`. Not a public-site test. |
 | MCP server bridge | Passed with official SDK, real stdio child → authenticated HTTP → shared server scheduler → FFmpeg output. `evidence/server-mcp.json`. SSH/GUI-client transport unverified. |
 | Server isolation controls | Verified on the VPS: non-root read-only container, 4 CPU/6 GiB limit, loopback-only HTTP, no published WebSocket, dropped capabilities with only `SYS_CHROOT` restored for Chromium sandboxing, no-new-privileges and checked-destination proxy. |
-| Dependency audit | 0 known runtime vulnerabilities reported; `evidence/server-audit.json`. Not a security certification. |
+| Dependency audit | 0 known vulnerabilities in both full and runtime-only audits after the packaging dependency update; `evidence/server-audit.json`. Not a security certification. |
 | Docker image/install and Windows launchers | VPS Docker image built and recreated successfully while retaining the same data volume. Windows tunnel launcher source remains supplied but was not re-executed in this gate. |
 | Server OBS and physical capture | Passed for a real server virtual-display website capture, authenticated control, MKV, download, render and interruption recovery. Live laptop-device forwarding remains unimplemented. |
 | Reproduction | Locked Node source, pinned upstream OBS DEB checksum, package receipt and accepted local image ID recorded. No registry digest or byte-identical cross-host image claim. |
@@ -38,7 +44,7 @@ The existing Windows 0.1.0 installer belongs to the earlier local preview and wa
 
 Run from the source root with Node 24:
 
-- `npm test` — **21 passed, 0 failed**. Includes real FFmpeg trim, cancellation and narrated MP4/SRT composition; paid-provider and OBS contracts are explicitly mocked.
+- `npm test` — **32 passed, 0 failed** in the audit run. Includes real FFmpeg trim, cancellation, delayed-finalization recovery and narrated MP4/SRT composition; paid-provider and OBS protocol contracts are explicitly mocked.
 - `npm run build` — production React bundle succeeded.
 - `npm run test:integration` — real deterministic browser capture on two viewports, continuous WebM, consecutive JPEG evidence, motion manifest, brief, coverage, local H.264 MP4.
 - `node scripts/state-validation.cjs` — keyboard disclosure, mobile layout, reduced motion, sticky header and reverse-scroll reset on the deterministic site.

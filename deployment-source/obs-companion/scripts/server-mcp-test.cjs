@@ -6,6 +6,7 @@ const {createServer}=require('../src/server.cjs');
 const {atomic}=require('../src/core.cjs');
 const {run}=require('../src/media.cjs');
 (async()=>{
+  fs.mkdirSync(path.resolve('work'),{recursive:true});
   const root=fs.mkdtempSync(path.resolve('work/server-mcp-')),origin='http://127.0.0.1:8790',token=crypto.randomBytes(32).toString('hex');
   const app=createServer({root,token,origins:[origin],env:{FREE_DISK_FLOOR_BYTES:'1'}});
   await new Promise(resolve=>app.server.listen(8790,'127.0.0.1',resolve));
@@ -20,7 +21,7 @@ const {run}=require('../src/media.cjs');
     await client.callTool({name:'render',arguments:{projectId:p.id}});
     const deadline=Date.now()+10000;while(app.active&&Date.now()<deadline)await new Promise(r=>setTimeout(r,20));
     const response=await client.callTool({name:'get_output',arguments:{projectId:p.id}}),output=JSON.parse(response.content[0].text);assert.ok(output.sha256);assert.ok(Math.abs(output.duration-1)<.1);
-    atomic('evidence/server-mcp.json',{passed:true,at:new Date().toISOString(),client:'@modelcontextprotocol/sdk 1.26.0',transport:'real stdio child → authenticated HTTP → single server scheduler',tools:tools.tools.map(x=>x.name),output,boundary:'Local Linux test. SSH transport, supplied host and named GUI client not verified.'});
+    atomic('evidence/server-mcp.json',{passed:true,at:new Date().toISOString(),client:'@modelcontextprotocol/sdk 1.26.0',transport:'real stdio child → authenticated HTTP → single server scheduler',tools:tools.tools.map(x=>x.name),output,boundary:`Local ${process.platform} test. SSH transport, supplied host and named GUI client not verified.`});
     console.log('Server MCP acceptance passed');
   }finally{await client.close();await app.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

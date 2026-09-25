@@ -1,5 +1,11 @@
 # OBS Companion progress
 
+## Security and reliability audit — 25 September 2026
+
+Completed a repository-wide and live-deployment audit. The remediation branch adds OBS finalization and reused-input recovery, consistent SSRF classification, Windows concat portability, imported-video remux, truthful cancellation/UI prerequisites, clean-clone acceptance setup, structured OBS health output, full dependency auditing, and focused regressions. The local suite now passes 32 tests; real Windows Chrome/HTTP/FFmpeg browser, capture, and MCP acceptances pass. Both full and production-only npm audits report zero known vulnerabilities after the packaging dependency update.
+
+The current loopback-only VPS remains appropriate for one trusted operator. The critical operational gap is the absence of an evidenced off-site copy or restore drill for the persistent volume. No Bunny or Cloudflare resource was provisioned. See `docs/AUDIT-2026-09-25.md` for findings, current official pricing, service decisions, and migration/rollback guidance.
+
 ## Server migration preview — 25 September 2026
 
 The supplied VPS is deployed and accepted for the requested server OBS path. The service runs in an isolated, hardened container with loopback-only HTTP and the original persistent data volume. OBS Studio 32.2.2, authenticated obs-websocket 5.7.4, application readiness and full health checks are operational.
