@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Local OBS recording and evidence-first website handoffs",
-  "author": "Vistralo contributors",
+  "author": "Dynamix LTD",
   "license": "MIT",
   "main": "src/main.cjs",
   "scripts": {

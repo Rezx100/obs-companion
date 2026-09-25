@@ -89,6 +89,12 @@ A final regression fix prevents edit/import/processing operations from replacing
 
 This source change preserves the historical OBS Companion 0.1.0 evidence above. Current verification must be tied to the rebranding commit and is recorded in `evidence/vistralo-rebrand.json`. The old installer checksum is **not** a Vistralo artifact. Live VPS cutover, repository administration and native Windows upgrade/DPAPI checks are separate pending gates. See `docs/VISTRALO-CUTOVER.md`.
 
+### Signed release gate (source only)
+
+`scripts/Build-SignedRelease.ps1` requires a Windows signing identity for Dynamix LTD and fails if the certificate is missing, expired, lacks a private key or code-signing use, or has a different publisher. It runs the build and tests, signs unsigned packaged Windows executables, checks the NSIS payload before signing the installer, then verifies Authenticode and recomputes the final SHA-256. This script has **not** run with a trusted certificate or on a Windows signing host. The currently shared Vistralo installer is unsigned and triggers Unknown publisher. SmartScreen reputation can still warn for a new signed binary. Public release also requires native fresh-install/upgrade/uninstall checks and completion of the privacy/service launch gates.
+
+The custom NSIS license page displays the MIT license from `LICENSE`. It now opens with Vistralo/Dynamix LTD attribution and retains the original OBS Companion contributor copyright as required by the original open-source notice. Installer-page appearance is not yet verified through a native Windows install.
+
 The standard `dist:win` artifact name and the custom NSIS `OutFile` both use `Vistralo-${version}-Setup.exe`. The custom NSIS publisher entry is Dynamix LTD. This is source/package validation; native Windows installation and upgrade still require a Windows run.
 
 ## Legal notice status

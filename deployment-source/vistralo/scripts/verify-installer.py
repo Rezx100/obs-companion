@@ -22,6 +22,13 @@ for relative in ('resources/app.asar', 'resources/browsers/ffmpeg-1011/ffmpeg-wi
     content = (base/'dist/win-unpacked'/relative).read_bytes()
     assert content in payload, f'Missing/corrupt embedded {relative}'
     checks.append({'file': relative, 'sha256': hashlib.sha256(content).hexdigest()})
-report = {'installer': installer.name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest(), 'peHeaderValid': True, 'nsisHeaderOffset': header, 'nsisHeaderSize': header_size, 'deflateBytesVerified': len(payload), 'crc32Valid': True, 'crcStart': crc_start, 'embeddedChecks': checks, 'signed': False, 'windowsExecuted': False}
+license_checks = (
+    'Vistralo is maintained by Dynamix LTD.',
+    'Copyright (c) 2026 Dynamix LTD (Vistralo contributions)',
+    'Copyright (c) 2026 OBS Companion contributors',
+)
+for notice in license_checks:
+    assert notice.encode('utf-16le') in payload, f'Missing NSIS license notice: {notice}'
+report = {'installer': installer.name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest(), 'peHeaderValid': True, 'nsisHeaderOffset': header, 'nsisHeaderSize': header_size, 'deflateBytesVerified': len(payload), 'crc32Valid': True, 'crcStart': crc_start, 'embeddedChecks': checks, 'licenseNoticesEmbedded': True, 'signed': False, 'windowsExecuted': False}
 (base/'evidence/installer-validation.json').write_text(json.dumps(report, indent=2))
 print(json.dumps(report, indent=2))

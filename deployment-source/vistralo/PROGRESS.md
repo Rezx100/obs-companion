@@ -1,5 +1,9 @@
 # OBS Companion progress
 
+## Windows signing gate — 25 September 2026
+
+The distributed Vistralo preview produces the SmartScreen **Unknown publisher** warning because the installer and executable are unsigned. Added `scripts/Build-SignedRelease.ps1`: a Windows-only, fail-closed path that requires a trusted code-signing certificate identifying Dynamix LTD, timestamps and verifies all packaged Windows binaries and the installer, and recomputes the signed artifact checksum. The NSIS license now starts with Vistralo/Dynamix attribution and retains the original OBS Companion contributor copyright. No certificate or Windows signing host is available in this workspace; this is **not** a signed deliverable or a completed Windows install test. Signed downloads and native acceptance are pending. The unpublished privacy/terms drafts and separate data-practice gates remain pending as well.
+
 ## Vistralo Windows download correction — 25 September 2026
 
 The standard electron-builder Windows artifact name is now `Vistralo-${version}-Setup.exe`, matching the custom installer and current desktop identity. The custom installer's displayed publisher is Dynamix LTD. The legacy application ID and uninstall registry key remain for upgrade continuity; the historical OBS Companion evidence below records earlier builds.

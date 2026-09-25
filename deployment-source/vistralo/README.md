@@ -6,7 +6,7 @@ An independent local recording and website-evidence companion. **No OVH or ReqTa
 
 ## Install and start
 
-1. Install `Vistralo-0.1.0-Setup.exe` after a verified build on 64-bit Windows 10/11. No administrator access is required. Compare the SHA-256 with the supplied checksum before running it. It is unsigned; Windows may show an unknown-publisher warning.
+1. The current `Vistralo-0.1.0-Setup.exe` is an **unsigned preview**, not a public release. Windows SmartScreen shows Unknown publisher. For a public download, use the signed-release process below and compare the SHA-256 with its newly generated checksum.
 2. Install OBS Studio 28+ separately. In **Tools → WebSocket Server Settings**, enable the server and authentication; set a password. Keep the endpoint local.
 3. Install FFmpeg and FFprobe from a trusted distribution. Open Vistralo **Settings** and select both executables, or place them on PATH. Click **Check setup**. Microsoft Edge must be installed for website evidence capture. The small Playwright video encoder helper is bundled.
 4. Connect OBS in Settings. Create a recording project → **Prepare OBS workspace** → select devices → **Use these sources**. Confirm both previews and the microphone meter before recording.
@@ -31,7 +31,7 @@ Legal notices are not yet published; see [legal publication gate](docs/legal/REA
 - Live standalone OpenAI/HeyGen API calls, prices/caps and paid output quality are unverified. Connector read-only access confirmed the exact Boya voice and its Starfish listing; it does not transfer an API key into the app.
 - No named GUI MCP desktop client was tested. The official SDK stdio client did pass real list/edit/render/output integration.
 - Coverage is bounded discovery, not exhaustive proof of every animation. Canvas/WebGL and inaccessible frames need review. Sparse frame timing is approximate. Original-speed evidence is preserved.
-- No signing certificate, automatic updater, production QA or long-duration hardware benchmark.
+- No trusted Dynamix LTD code-signing certificate, automatic updater, production QA or long-duration hardware benchmark. The current download remains unsigned.
 
 ## Reproduce
 
@@ -49,6 +49,16 @@ npm run installer:custom
 ```
 
 `resources/browsers/ffmpeg-1011` is included in the source archive with its LGPL notice. To restore it separately, see `scripts/prepare-browser-helper.cjs`. The custom NSIS source reproduces the delivered installer structure; Windows binary hashes may differ across build hosts. The initial standard electron-builder NSIS route required Wine on Linux, so the delivered installer uses the checked-in NSIS script. Neither build path signs the executable.
+
+### Signed Windows release gate
+
+On a trusted Windows build host, install Node 24, Python 3, NSIS 3, FFmpeg and the Windows SDK SignTool. Provision a publicly trusted **code-signing certificate issued to Dynamix LTD** in the build account's `Cert:\CurrentUser\My` store, with its signing key protected by the issuer's supported hardware or signing service. Do not add the certificate, private key or PFX to the repository. Set `MAKENSIS` if NSIS is not on PATH. With the certificate and an RFC 3161 timestamp service from the issuer, run:
+
+```powershell
+./scripts/Build-SignedRelease.ps1 -CertificateThumbprint '<certificate thumbprint>' -TimestampUrl '<issuer RFC 3161 URL>'
+```
+
+The script fails if the certificate does not identify Dynamix LTD, the key/EKU is missing, a packaged Windows binary has an invalid signature, the NSIS payload fails validation, or the signed installer fails Windows Authenticode validation. It signs unsigned packaged Windows binaries before assembling the installer, then signs and timestamps the installer and replaces its checksum. Verify fresh install, upgrade, uninstall and real OBS/device workflows on Windows before release. A signed first release may still show a SmartScreen reputation warning until reputation builds; signing does not guarantee that SmartScreen will be silent.
 
 ```sh
 npm run test:integration       # Linux evidence fixture using dev-only Chromium package
