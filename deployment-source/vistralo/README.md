@@ -12,7 +12,7 @@ An independent local recording and website-evidence companion. **No OVH or ReqTa
 4. Connect OBS in Settings. Create a recording project → **Prepare OBS workspace** → select devices → **Use these sources**. Confirm both previews and the microphone meter before recording.
 5. Record, pause/resume and Finish. **Prepare MP4 replay** remuxes the recoverable MKV without re-encoding. **Extract screen + camera** creates two separate 1080p derivatives. Open Folder shows the exact completed files.
 
-Read [docs/SETUP.md](docs/SETUP.md), [docs/PROVIDERS.md](docs/PROVIDERS.md), and [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md) before hardware/provider tests.
+Legal notices are not yet published; see [legal publication gate](docs/legal/README.md). Read [docs/SETUP.md](docs/SETUP.md), [docs/PROVIDERS.md](docs/PROVIDERS.md), and [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md) before hardware/provider tests.
 
 ## What is implemented
 

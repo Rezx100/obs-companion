@@ -35,3 +35,7 @@ Final review found and fixed a recording-state conflict: edits/imports/processin
 ## Vistralo engineering rebrand — 25 September 2026
 
 Source branch `codex/rebrand-vistralo` changes first-party package, runtime, desktop, browser and MCP identity. The old desktop library/vault, installer registration, OBS resources, server volume and deployment lock have explicit compatibility handling. Deployment is gated until the forced-command handler is installed and a restorable backup is verified; see `docs/VISTRALO-CUTOVER.md`. This is not a live production migration or native Windows pass. Earlier acceptance/evidence sections below are historical OBS Companion results.
+
+## Legal disclosure audit — 25 September 2026
+
+The engineering rebrand changed desktop/server names, but no privacy policy, service terms or storage notice existed in the repository or app navigation. Added Vistralo-specific unpublished drafts and a verified product data map under `docs/legal/`. These are not a compliance certification and are not linked as live policies. Operator identity, privacy contact, retention/deletion, provider contracts, transfer safeguards and customer terms must be supplied and reviewed before publication. The current shared-token studio is not suitable for independent customer accounts.
