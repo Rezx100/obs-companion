@@ -71,6 +71,6 @@
         ]
       }
     ],
-    "artifactName": "OBS-Companion-${version}-Setup.${ext}"
+    "artifactName": "Vistralo-${version}-Setup.${ext}"
   }
 }

@@ -1,5 +1,9 @@
 # OBS Companion progress
 
+## Vistralo Windows download correction — 25 September 2026
+
+The standard electron-builder Windows artifact name is now `Vistralo-${version}-Setup.exe`, matching the custom installer and current desktop identity. The custom installer's displayed publisher is Dynamix LTD. The legacy application ID and uninstall registry key remain for upgrade continuity; the historical OBS Companion evidence below records earlier builds.
+
 ## Security and reliability audit — 25 September 2026
 
 Completed a repository-wide and live-deployment audit. The remediation branch adds OBS finalization and reused-input recovery, consistent SSRF classification, Windows concat portability, imported-video remux, truthful cancellation/UI prerequisites, clean-clone acceptance setup, structured OBS health output, full dependency auditing, and focused regressions. The local suite now passes 32 tests; real Windows Chrome/HTTP/FFmpeg browser, capture, and MCP acceptances pass. Both full and production-only npm audits report zero known vulnerabilities after the packaging dependency update.

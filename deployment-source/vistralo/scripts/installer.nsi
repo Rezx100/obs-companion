@@ -45,7 +45,7 @@ Section "Vistralo" SecMain
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\OBSCompanion" "InstallLocation" "$INSTDIR"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\OBSCompanion" "UninstallString" '"$INSTDIR\Uninstall.exe"'
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\OBSCompanion" "DisplayVersion" "${APP_VERSION}"
- WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\OBSCompanion" "Publisher" "OBS Companion contributors"
+ WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\OBSCompanion" "Publisher" "Dynamix LTD"
  WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\OBSCompanion" "NoModify" 1
  WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\OBSCompanion" "NoRepair" 1
 SectionEnd

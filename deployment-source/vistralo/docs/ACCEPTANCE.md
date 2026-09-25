@@ -89,6 +89,8 @@ A final regression fix prevents edit/import/processing operations from replacing
 
 This source change preserves the historical OBS Companion 0.1.0 evidence above. Current verification must be tied to the rebranding commit and is recorded in `evidence/vistralo-rebrand.json`. The old installer checksum is **not** a Vistralo artifact. Live VPS cutover, repository administration and native Windows upgrade/DPAPI checks are separate pending gates. See `docs/VISTRALO-CUTOVER.md`.
 
+The standard `dist:win` artifact name and the custom NSIS `OutFile` both use `Vistralo-${version}-Setup.exe`. The custom NSIS publisher entry is Dynamix LTD. This is source/package validation; native Windows installation and upgrade still require a Windows run.
+
 ## Legal notice status
 
 Unpublished Vistralo legal drafts are in `docs/legal/`. No public privacy/terms pages or desktop/server policy links have been released. Legal operator facts and a tested rights/deletion process are still missing; do not call the product US, EEA or UK compliant on this basis.
