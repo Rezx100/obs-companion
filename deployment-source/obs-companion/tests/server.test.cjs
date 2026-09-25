@@ -79,11 +79,25 @@ test('real server upload → edit → FFmpeg render → range download preserves
   }finally{await client.app.close();fs.rmSync(root,{recursive:true,force:true});}
 });
 test('server blocks private capture and egress proxy resolves to a checked public address',async()=>{
-  for(const ip of ['127.0.0.1','10.1.2.3','172.16.0.1','192.168.1.2','169.254.169.254','100.64.0.1','224.1.2.3','::1','::ffff:127.0.0.1','fd00::1','2001:db8::1'])assert.equal(publicAddress(ip),false,ip);
+  for(const ip of ['127.0.0.1','10.1.2.3','172.16.0.1','192.168.1.2','169.254.169.254','100.64.0.1','192.0.2.1','198.51.100.1','203.0.113.1','224.1.2.3','::1','::ffff:127.0.0.1','fd00::1','2001:db8::1'])assert.equal(publicAddress(ip),false,ip);
   assert.equal(publicAddress('1.1.1.1'),true);assert.equal(publicAddress('2606:4700:4700::1111'),true);
   await assert.rejects(()=>destination('example.test',22,async()=>[{address:'1.1.1.1',family:4}]),/ports/);
   await assert.rejects(()=>destination('example.test',443,async()=>[{address:'1.1.1.1',family:4},{address:'127.0.0.1',family:4}]),/blocked/);
   assert.deepEqual(await destination('example.test',443,async()=>[{address:'1.1.1.1',family:4}]),{address:'1.1.1.1',family:4});
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'obs-server-private-')),client=await setup(root);
   try{await client.login();await assert.rejects(()=>client.rpc('walkthrough',{url:'http://127.0.0.1',localApproved:true}),/private origins/);}finally{await client.app.close();fs.rmSync(root,{recursive:true,force:true});}
+});
+test('server reports whether the active operation can actually be cancelled',async()=>{
+  const root=fs.mkdtempSync(path.join(os.tmpdir(),'obs-server-cancel-state-')),client=await setup(root);
+  try{
+    await client.login();const project=await client.rpc('create',{name:'Cancel state',mode:'record'}),bytes=Buffer.from('1\n00:00:00,000 --> 00:00:01,000\nCaption.\n'),digest=crypto.createHash('sha256').update(bytes).digest('hex');
+    const upload=await client.rpc('uploadCreate',{id:project.id,filename:'captions.srt',kind:'captions',size:bytes.length,digest});
+    await client.request('/uploads/'+upload.id,{method:'PUT',headers:{'Upload-Offset':'0'},body:bytes});
+    const complete=client.app.uploads.complete.bind(client.app.uploads);let release;const gate=new Promise(resolve=>release=resolve);
+    client.app.uploads.complete=async id=>{await gate;return complete(id);};
+    const pending=client.rpc('uploadComplete',{upload:upload.id});
+    while(!client.app.active)await new Promise(resolve=>setTimeout(resolve,5));
+    assert.equal((await client.rpc('status')).active.cancellable,false);
+    release();await pending;
+  }finally{await client.app.close();fs.rmSync(root,{recursive:true,force:true});}
 });

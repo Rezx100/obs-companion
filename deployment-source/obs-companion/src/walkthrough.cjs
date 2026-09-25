@@ -1,7 +1,8 @@
 'use strict';
-const fs=require('node:fs');const path=require('node:path');const dns=require('node:dns/promises');const net=require('node:net');
+const fs=require('node:fs');const path=require('node:path');const dns=require('node:dns/promises');
 const {chromium}=require('playwright');const {assert,atomic,within,disk,id,hash}=require('./core.cjs');
-function privateIP(ip){return /^(127\.|10\.|192\.168\.|169\.254\.|0\.|172\.(1[6-9]|2\d|3[01])\.)/.test(ip)||ip==='::1'||ip==='::'||/^(fc|fd|fe8|fe9|fea|feb)/i.test(ip)||ip.startsWith('::ffff:');}
+const {publicAddress}=require('./server-egress.cjs');
+function privateIP(ip){return !publicAddress(ip);}
 async function allowedURL(raw,localOrigin){const u=new URL(raw);assert(['http:','https:'].includes(u.protocol)&&!u.username&&!u.password,'Use an HTTP(S) URL without embedded credentials');if(localOrigin&&u.origin===localOrigin)return u;const addresses=await dns.lookup(u.hostname.replace(/^\[|\]$/g,''),{all:true});assert(addresses.length&&!addresses.some(x=>privateIP(x.address)),'Private network access requires explicit approval of this exact origin');return u;}
 function instrument(){
  window.__obsEvidence={started:performance.now(),samples:[],events:[]};

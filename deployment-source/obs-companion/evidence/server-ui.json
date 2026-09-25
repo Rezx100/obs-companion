@@ -1,9 +1,10 @@
 {
   "passed": true,
-  "at": "2026-09-25T04:53:36.006Z",
+  "at": "2026-09-25T08:17:51.167Z",
   "checks": [
     "real HTTP login",
     "project creation",
+    "unavailable recovery and voice controls hidden or disabled",
     "browser hash worker upload",
     "source SHA-256 preservation",
     "server FFmpeg render",
@@ -13,8 +14,8 @@
     "multi-chunk browser SHA-256 matches Node"
   ],
   "output": {
-    "file": "exports/edited-57064d66.mp4",
-    "sha256": "0a0ac7da3380c28814b7f94cd5f78d63113c36174d3c6fdadf120f398e3b2dfc",
+    "file": "exports/edited-6e675856.mp4",
+    "sha256": "fd708d61f9f5296beadfc285bf6fbf1a2900e63405ea4959fc08eb284d8e5309",
     "duration": 1,
     "streams": [
       {
@@ -25,5 +26,5 @@
       }
     ]
   },
-  "boundary": "Local Linux HTTP server and real Chromium/FFmpeg. Not the supplied Ubuntu server, Docker, OBS native capture or Windows devices."
+  "boundary": "Local win32 HTTP server and real Chromium/FFmpeg. Not the supplied Ubuntu server, Docker, OBS native capture or other devices."
 }

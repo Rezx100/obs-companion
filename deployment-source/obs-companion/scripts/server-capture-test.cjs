@@ -5,6 +5,7 @@ const {atomic}=require('../src/core.cjs');
 (async()=>{
   const fixture=http.createServer((req,res)=>{res.setHeader('Content-Type','text/html');res.end(fs.readFileSync('fixtures/motion-lab.html'));});
   await new Promise(resolve=>fixture.listen(0,'127.0.0.1',resolve));
+  fs.mkdirSync(path.resolve('work'),{recursive:true});
   const root=fs.mkdtempSync(path.resolve('work/server-capture-')),token=crypto.randomBytes(32).toString('hex'),origin='http://127.0.0.1:8789';
   const exe=process.env.COMPANION_TEST_CHROMIUM||path.resolve('.cache/chromium/chromium');
   if(!process.env.COMPANION_TEST_CHROMIUM){fs.mkdirSync(path.dirname(exe),{recursive:true});fs.writeFileSync(exe,require('node:zlib').brotliDecompressSync(fs.readFileSync('node_modules/@sparticuz/chromium/bin/chromium.br')));fs.chmodSync(exe,0o755);}

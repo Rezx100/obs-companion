@@ -11,14 +11,18 @@ class Capture extends EventEmitter {
  async call(name,data={}){assert(this.connected,'Connect to OBS first');return this.obs.call(name,data);}
  async connect(password,port=4455){assert(typeof password==='string'&&password.length>0,'Set an OBS WebSocket password first');assert(Number.isInteger(port)&&port>=1024&&port<=65535,'Invalid port');await this.obs.connect(`ws://127.0.0.1:${port}`,password,{rpcVersion:1,eventSubscriptions:1|4|8|64|65536});this.connected=true;const version=await this.call('GetVersion');this.version=version;assert(version.availableRequests.includes('SetVideoSettings'),'OBS WebSocket 5.x required');return version;}
  async idle(){const r=await this.call('GetRecordStatus'),s=await this.call('GetStreamStatus');assert(!r.outputActive&&!s.outputActive,'Stop OBS recording/streaming before setup');}
- async setup(){await this.idle();const profiles=await this.call('GetProfileList'),collections=await this.call('GetSceneCollectionList');if(profiles.currentProfileName!==PROFILE&&collections.currentSceneCollectionName!==PROFILE){this.previous={profile:profiles.currentProfileName,collection:collections.currentSceneCollectionName};atomic(path.join(this.store.root,'obs-restore.json'),this.previous);}
+ async setup(){await this.idle();const profiles=await this.call('GetProfileList'),collections=await this.call('GetSceneCollectionList');if(profiles.currentProfileName!==PROFILE||collections.currentSceneCollectionName!==PROFILE){this.previous={profile:profiles.currentProfileName,collection:collections.currentSceneCollectionName};atomic(path.join(this.store.root,'obs-restore.json'),this.previous);}
   if(!profiles.profiles.includes(PROFILE))await this.call('CreateProfile',{profileName:PROFILE});await this.call('SetCurrentProfile',{profileName:PROFILE});
   if(!collections.sceneCollections.includes(PROFILE))await this.call('CreateSceneCollection',{sceneCollectionName:PROFILE});await this.call('SetCurrentSceneCollection',{sceneCollectionName:PROFILE});
   const scenes=await this.call('GetSceneList');if(!scenes.scenes.some(s=>s.sceneName===SCENE))await this.call('CreateScene',{sceneName:SCENE});
   const kinds=(await this.call('GetInputKindList',{unversioned:true})).inputKinds;
   for(const kind of ['monitor_capture','dshow_input','wasapi_input_capture'])assert(kinds.includes(kind),`Windows OBS source ${kind} unavailable. Use the Windows build of OBS Studio.`);
   const inputs=await this.call('GetInputList');
-  for(const [inputName,inputKind] of [['Companion Screen','monitor_capture'],['Companion Camera','dshow_input'],['Companion Mic','wasapi_input_capture'],['Companion Desktop','wasapi_output_capture']])if(!inputs.inputs.some(i=>i.inputName===inputName))await this.call('CreateInput',{sceneName:SCENE,inputName,inputKind,inputSettings:{},sceneItemEnabled:true});
+   for(const [inputName,inputKind] of [['Companion Screen','monitor_capture'],['Companion Camera','dshow_input'],['Companion Mic','wasapi_input_capture'],['Companion Desktop','wasapi_output_capture']]){
+    if(!inputs.inputs.some(i=>i.inputName===inputName))await this.call('CreateInput',{sceneName:SCENE,inputName,inputKind,inputSettings:{},sceneItemEnabled:true});
+    let sceneItemId;try{({sceneItemId}=await this.call('GetSceneItemId',{sceneName:SCENE,sourceName:inputName}));}catch{({sceneItemId}=await this.call('CreateSceneItem',{sceneName:SCENE,sourceName:inputName,sceneItemEnabled:true}));}
+    await this.call('SetSceneItemEnabled',{sceneName:SCENE,sceneItemId,sceneItemEnabled:true});
+   }
   await this.call('SetCurrentProgramScene',{sceneName:SCENE});
   // Fresh scene collections may inherit global desktop/mic inputs. Explicitly mute all audio except the selected microphone.
   for(const i of (await this.call('GetInputList')).inputs){try{await this.call('SetInputMute',{inputName:i.inputName,inputMuted:i.inputName!=='Companion Mic'});}catch{}}

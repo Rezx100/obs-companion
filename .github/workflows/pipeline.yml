@@ -47,6 +47,7 @@ jobs:
           npm run build
           npm run build:server
           npm audit --omit=dev
+          npm audit
           trap 'rm -f deploy/runtime.env' EXIT
           printf '%s\n' \
             'COMPANION_TOKEN=ci-validation-token-00000000000000000000000000000000' \

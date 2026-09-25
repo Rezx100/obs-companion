@@ -5,6 +5,32 @@ const {assert, within, hash, disk} = require('./core.cjs');
 const {captureWalkthrough} = require('./walkthrough.cjs');
 const SCENE = 'Companion Server Desktop';
 const DISPLAY_INPUT = 'Companion Server Display';
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+async function waitForFinalizedMaster(service, file, timeoutMs = 15000) {
+  const deadline = Date.now() + timeoutMs;
+  let stable = 0, previous = null, probeError;
+  while (Date.now() < deadline) {
+    if (fs.existsSync(file)) {
+      try {
+        await service.media.probe(file);
+        const stat = fs.statSync(file), signature = `${stat.size}:${stat.mtimeMs}`;
+        stable = signature === previous ? stable + 1 : 0;
+        previous = signature;
+        if (stable >= 5) return;
+      } catch (error) {probeError = error; stable = 0; previous = null;}
+    }
+    await sleep(200);
+  }
+  throw probeError || new Error('OBS did not finalize a stable, playable recording within 15 seconds');
+}
+
+function checkedOutputPath(directory, outputPath) {
+  assert(typeof outputPath === 'string' && outputPath.length > 0, 'OBS did not return a recording filename');
+  const base = fs.realpathSync(directory), candidate = path.resolve(outputPath);
+  assert(candidate.startsWith(base + path.sep) && path.extname(candidate).toLowerCase() === '.mkv', 'OBS output escaped the recording directory');
+  return {base,candidate};
+}
 
 // This adapter owns only the OBS instance inside the isolated server container.
 // It never connects to another application's OBS instance or the user's laptop.
@@ -21,25 +47,11 @@ async function recordWalkthrough(service, id, options, password, client, capture
       if (!recording || stopAttempted) return;
       stopAttempted = true;
       const result = await call('StopRecord'); recording = false;
-      const deadline = Date.now() + 15000;
-      while (!fs.existsSync(result.outputPath) && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 100));
-      assert(fs.existsSync(result.outputPath), 'OBS did not finalize the recording file within 15 seconds');
-      const file = fs.realpathSync(result.outputPath), base = fs.realpathSync(directory);
-      assert(file.startsWith(base + path.sep) && path.extname(file) === '.mkv', 'OBS output escaped the recording directory');
+      const {base,candidate} = checkedOutputPath(directory,result.outputPath);
+      await waitForFinalizedMaster(service,candidate);
+      const file = fs.realpathSync(candidate);
+      assert(file.startsWith(base + path.sep), 'OBS output escaped the recording directory');
       const relative = path.relative(root,file).split(path.sep).join('/');
-      let playable = false, probeError;
-      for (let attempt = 0; attempt < 75 && !playable; attempt++) {
-        try { await service.media.probe(file); playable = true; }
-        catch (error) { probeError = error; await new Promise(resolve => setTimeout(resolve, 200)); }
-      }
-      if (!playable) throw probeError || new Error('OBS master did not become playable within 15 seconds');
-      let stable = 0, previous = null;
-      for (let attempt = 0; attempt < 75 && stable < 5; attempt++) {
-        const stat = fs.statSync(file), signature = `${stat.size}:${stat.mtimeMs}`;
-        stable = signature === previous ? stable + 1 : 0; previous = signature;
-        if (stable < 5) await new Promise(resolve => setTimeout(resolve, 200));
-      }
-      assert(stable >= 5, 'OBS master did not stop changing within 15 seconds');
       service.store.update(id,'Processing',{master:relative, sourceSha256:await hash(file), capture:{engine:'OBS Studio',source:'server virtual display',width:1920,height:1080,fps:30}});
     }
     try {
@@ -50,7 +62,15 @@ async function recordWalkthrough(service, id, options, password, client, capture
       const x11Kind = kinds.includes('xshm_input_v2') ? 'xshm_input_v2' : kinds.includes('xshm_input') ? 'xshm_input' : null;
       assert(x11Kind, 'OBS X11 capture is unavailable');
       if (!(await call('GetSceneList')).scenes.some(s=>s.sceneName===SCENE)) await call('CreateScene',{sceneName:SCENE});
-      if (!(await call('GetInputList')).inputs.some(i=>i.inputName===DISPLAY_INPUT)) await call('CreateInput',{sceneName:SCENE,inputName:DISPLAY_INPUT,inputKind:x11Kind,inputSettings:{screen:0,show_cursor:false},sceneItemEnabled:true});
+      const existing=(await call('GetInputList')).inputs.find(i=>i.inputName===DISPLAY_INPUT);
+      if (!existing) await call('CreateInput',{sceneName:SCENE,inputName:DISPLAY_INPUT,inputKind:x11Kind,inputSettings:{screen:0,show_cursor:false},sceneItemEnabled:true});
+      else {
+        assert(existing.inputKind===x11Kind,'The server display input name is already used by another source kind');
+        await call('SetInputSettings',{inputName:DISPLAY_INPUT,inputSettings:{screen:0,show_cursor:false},overlay:true});
+      }
+      let sceneItemId;try{({sceneItemId}=await call('GetSceneItemId',{sceneName:SCENE,sourceName:DISPLAY_INPUT}));}catch{({sceneItemId}=await call('CreateSceneItem',{sceneName:SCENE,sourceName:DISPLAY_INPUT,sceneItemEnabled:true}));}
+      await call('SetSceneItemEnabled',{sceneName:SCENE,sceneItemId,sceneItemEnabled:true});
+      await call('SetSceneItemTransform',{sceneName:SCENE,sceneItemId,sceneItemTransform:{positionX:0,positionY:0,alignment:5,boundsType:'OBS_BOUNDS_SCALE_INNER',boundsWidth:1920,boundsHeight:1080,boundsAlignment:0,cropLeft:0,cropRight:0,cropTop:0,cropBottom:0}});
       await call('SetCurrentProgramScene',{sceneName:SCENE});
       await call('SetVideoSettings',{baseWidth:1920,baseHeight:1080,outputWidth:1920,outputHeight:1080,fpsNumerator:30,fpsDenominator:1});
       for (const [parameterCategory,parameterName,parameterValue] of [['Output','Mode','Advanced'],['AdvOut','RecType','Standard'],['AdvOut','RecFormat2','mkv'],['AdvOut','RecFormat','mkv'],['AdvOut','RecEncoder','obs_x264'],['AdvOut','RecTracks','1'],['AdvOut','RecRescale','false']]) await call('SetProfileParameter',{parameterCategory,parameterName,parameterValue});
@@ -91,7 +111,8 @@ async function recoverRecording(service,id,password,client) {
       const current=await obs.call('GetRecordDirectory');
       if((await obs.call('GetRecordStatus')).outputActive){
         assert(fs.realpathSync(current.recordDirectory)===fs.realpathSync(directory),'OBS is recording another project; recovery refused');
-        await obs.call('StopRecord');
+        const stopped=await obs.call('StopRecord'),{candidate}=checkedOutputPath(directory,stopped.outputPath);
+        await waitForFinalizedMaster(service,candidate);
       }
       const recovered=[];
       for(const name of fs.readdirSync(directory).filter(name=>name.endsWith('.mkv'))){
@@ -104,4 +125,4 @@ async function recoverRecording(service,id,password,client) {
     }finally{await obs.disconnect().catch(()=>{});}
   });
 }
-module.exports = {recordWalkthrough,recoverRecording};
+module.exports = {recordWalkthrough,recoverRecording,waitForFinalizedMaster};
