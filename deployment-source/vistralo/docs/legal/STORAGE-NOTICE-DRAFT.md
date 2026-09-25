@@ -4,4 +4,4 @@ The browser studio currently uses `vistralo_session`, a first-party HttpOnly, Sa
 
 There are no advertising or analytics scripts in the inspected application source. Verify the production reverse proxy, marketing site and any future third-party scripts before publishing this statement. Explain these essential storage operations in the final privacy/cookie notice. If non-essential analytics, tracking or similar device storage is added, assess EU/UK consent requirements and implement controls **before** setting it; a generic banner alone does not make the practice compliant.
 
-Operator Dynamix LDT · Contact `{{PRIVACY_EMAIL}}` · Effective `{{EFFECTIVE_DATE}}`.
+Operator Dynamix LTD · Contact `{{PRIVACY_EMAIL}}` · Effective `{{EFFECTIVE_DATE}}`.

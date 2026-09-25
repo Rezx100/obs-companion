@@ -1,6 +1,6 @@
 # Vistralo service terms — DRAFT, NOT PUBLISHED
 
-Operator Dynamix LDT, Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor · Effective `{{EFFECTIVE_DATE}}` · Contact `{{SUPPORT_EMAIL}}`
+Operator Dynamix LTD, Mirpur 12, Eastern Housing, Road10, House 123, 2nd Floor, Bangladesh · Effective `{{EFFECTIVE_DATE}}` · Contact `{{SUPPORT_EMAIL}}`
 
 These terms must be adapted to the actual distribution and payment model. The repository's MIT license governs the open-source code and retains its copyright and third-party notices. Separate service terms may govern an operator-hosted studio; they should not suggest the operator owns OBS Studio or customers' recordings.
 
