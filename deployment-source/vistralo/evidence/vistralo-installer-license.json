@@ -1,0 +1,24 @@
+{
+  "installer": "Vistralo-0.1.0-Setup.exe",
+  "bytes": 163643289,
+  "sha256": "551a9243863072ebdd90d20d800935f2adb55024a5ea666ea032ab227e23cc46",
+  "peHeaderValid": true,
+  "nsisHeaderOffset": 57856,
+  "nsisHeaderSize": 85676,
+  "deflateBytesVerified": 409424474,
+  "crc32Valid": true,
+  "crcStart": 512,
+  "embeddedChecks": [
+    {
+      "file": "resources/app.asar",
+      "sha256": "b0d98c84f707139ab915a9f8cf4e8184a5b49c7092f83745efa32f1740f30ae9"
+    },
+    {
+      "file": "resources/browsers/ffmpeg-1011/ffmpeg-win64.exe",
+      "sha256": "5b8f3f59ba61685828939ff3c833109748adbdea2fff4b4ae570c9fc0fc1ff4d"
+    }
+  ],
+  "licenseNoticesEmbedded": true,
+  "signed": false,
+  "windowsExecuted": false
+}

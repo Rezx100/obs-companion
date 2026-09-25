@@ -1,0 +1,46 @@
+name: obs-companion
+services:
+  studio:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: vistralo-server:0.2.0-preview
+    init: true
+    restart: unless-stopped
+    env_file: runtime.env
+    ports:
+      - "127.0.0.1:8787:8787"
+    volumes:
+      - studio-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=2147483648,mode=1777
+    shm_size: 1gb
+    cpus: 4
+    cpu_shares: 128
+    mem_limit: 6g
+    memswap_limit: 6g
+    pids_limit: 512
+    cap_drop:
+      - ALL
+    cap_add:
+      - SYS_CHROOT
+    security_opt:
+      - no-new-privileges:true
+      - seccomp=./seccomp_profile.json
+    stop_grace_period: 90s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "node", "deploy/healthcheck.cjs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+volumes:
+  studio-data:
+    external: true
+    name: obs-companion_studio-data

@@ -1,0 +1,46 @@
+{
+  "sourceBase": "ec9bbc37799214131c97ef4a32447370d232c6a8",
+  "branch": "codex/rebrand-vistralo",
+  "verifiedOn": "2026-09-25",
+  "unitTests": {
+    "passed": 34,
+    "failed": 0
+  },
+  "builds": [
+    "desktop React bundle",
+    "server worker",
+    "Windows x64 unpacked Vistralo.exe"
+  ],
+  "integrations": [
+    "server browser HTTP/upload/edit",
+    "server capture fixture",
+    "server MCP stdio bridge",
+    "local MCP SDK edit/render",
+    "desktop UI Chromium harness"
+  ],
+  "npmAudits": {
+    "production": 0,
+    "full": 0
+  },
+  "installer": {
+    "file": "Vistralo-0.1.0-Setup.exe",
+    "bytes": 163638637,
+    "sha256": "aefdae3fd0ab5ad221237348f5110d85f1b32368c2b72cb62631e20db87e94e3",
+    "checks": [
+      "PE",
+      "NSIS header",
+      "deflate payload",
+      "CRC",
+      "embedded ASAR and helper"
+    ],
+    "nativeWindowsExecuted": false,
+    "signed": false,
+    "executableResourceMetadataEdited": true
+  },
+  "notVerified": [
+    "live VPS cutover and off-site restore",
+    "Windows native fresh install/upgrade/DPAPI/uninstall",
+    "GitHub repository rename"
+  ],
+  "ci": "GitHub PR validation success, run 36115204128; deploy skipped"
+}

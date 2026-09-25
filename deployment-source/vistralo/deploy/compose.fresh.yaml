@@ -1,0 +1,5 @@
+name: vistralo
+volumes:
+  studio-data:
+    external: false
+    name: vistralo_studio-data

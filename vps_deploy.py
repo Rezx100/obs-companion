@@ -539,6 +539,8 @@ def main():
     parser.add_argument("--archive")
     parser.add_argument("--source")
     args = parser.parse_args()
+    if args.action not in {"inventory", "status", "diagnose-obs", "inspect-recordings"}:
+        parser.error("This historical OBS Companion deployment action is retired. Use deployment-source/vistralo/docs/VISTRALO-CUTOVER.md and the restricted GitHub deployment workflow.")
     transport = connect(args.env)
     try:
         if args.action == "inventory":

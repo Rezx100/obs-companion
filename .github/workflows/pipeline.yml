@@ -17,7 +17,7 @@ concurrency:
 defaults:
   run:
     shell: bash
-    working-directory: deployment-source/obs-companion
+    working-directory: deployment-source/vistralo
 
 jobs:
   validate:
@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 24.19.0
           cache: npm
-          cache-dependency-path: deployment-source/obs-companion/package-lock.json
+          cache-dependency-path: deployment-source/vistralo/package-lock.json
 
       - name: Install FFmpeg and locked dependencies
         run: |
@@ -50,7 +50,7 @@ jobs:
           npm audit
           trap 'rm -f deploy/runtime.env' EXIT
           printf '%s\n' \
-            'COMPANION_TOKEN=ci-validation-token-00000000000000000000000000000000' \
+            'VISTRALO_TOKEN=ci-validation-token-00000000000000000000000000000000' \
             'OBS_WEBSOCKET_PASSWORD=ci-validation-password-0000000000000000000000000000' \
             > deploy/runtime.env
           docker compose -f deploy/compose.yaml config --quiet
@@ -61,7 +61,7 @@ jobs:
 
   deploy:
     name: Deploy production
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.VISTRALO_CUTOVER_READY == 'true'
     needs: validate
     runs-on: ubuntu-24.04
     timeout-minutes: 35
