@@ -14,6 +14,8 @@ class Uploads {
     this.maxBytes = maxBytes;
     this.freeFloor = freeFloor;
     this.busy = new Set();
+    this.completing = new Set();
+    this.cancelling = new Map();
     service.store.db.exec(`CREATE TABLE IF NOT EXISTS uploads(
       id TEXT PRIMARY KEY, project TEXT NOT NULL, kind TEXT NOT NULL,
       extension TEXT NOT NULL, size INTEGER NOT NULL, digest TEXT NOT NULL,
@@ -47,6 +49,7 @@ class Uploads {
     return this.public(id);
   }
   async chunk(id, offset, bytes) {
+    assert(!this.cancelling.has(id), 'Upload cancellation requested');
     assert(!this.busy.has(id), 'Upload busy');
     this.busy.add(id);
     try {
@@ -61,8 +64,10 @@ class Uploads {
     } finally {this.busy.delete(id);}
   }
   async complete(id) {
+    assert(!this.cancelling.has(id), 'Upload cancellation requested');
     assert(!this.busy.has(id), 'Upload busy');
     this.busy.add(id);
+    this.completing.add(id);
     try {
       const row = this.get(id);
       if (row.state === 'Complete') return JSON.parse(row.result);
@@ -90,9 +95,23 @@ class Uploads {
       } catch (error) {this.service.store.db.exec('ROLLBACK'); throw error;}
       fs.unlinkSync(row.file);
       return result;
-    } finally {this.busy.delete(id);}
+    } finally {this.busy.delete(id); this.completing.delete(id);}
   }
-  remove(id) {
+  cancel(id) {
+    if (this.cancelling.has(id)) return this.cancelling.get(id);
+    const row = this.get(id);
+    assert(row.state === 'Uploading', 'Completed source files cannot be cancelled');
+    assert(!this.completing.has(id), 'Upload verification is already finishing; wait for completion');
+    // Mark synchronously, before yielding, to stop a queued or subsequent chunk.
+    const task = Promise.resolve().then(async () => {
+      while (this.busy.has(id)) await new Promise(resolve => setTimeout(resolve, 10));
+      return this.remove(id, true);
+    }).finally(() => this.cancelling.delete(id));
+    this.cancelling.set(id, task);
+    return task;
+  }
+  remove(id, cancellation = false) {
+    if (!cancellation && this.cancelling.has(id)) return this.cancelling.get(id);
     assert(!this.busy.has(id), 'Upload busy');
     const row = this.get(id);
     assert(row.state === 'Uploading', 'Completed source files cannot be deleted here');

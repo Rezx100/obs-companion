@@ -2,7 +2,7 @@ name: Agentic CI/CD
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, codex/rebrand-vistralo, codex/clarify-website-video-results]
   push:
     branches: [main]
   workflow_dispatch:
@@ -46,6 +46,8 @@ jobs:
           npm test
           npm run build
           npm run build:server
+          npm run typecheck:web
+          npm run lint:design
           npm audit --omit=dev
           npm audit
           trap 'rm -f deploy/runtime.env' EXIT
@@ -59,10 +61,39 @@ jobs:
           node --check deploy/wait-for-obs.cjs
           bash -n deploy/github-deploy.sh
 
+  web-browser:
+    name: Web journeys and accessibility
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+        with:
+          node-version: 24.19.0
+      - name: Install browser and media tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          npm ci --ignore-scripts
+          npx playwright install --with-deps chromium
+      - name: Build and verify browser journeys
+        run: |
+          npm run build:server
+          npm run test:web:a11y
+          VISTRALO_TEST_CHROMIUM=$(node -p "require('playwright').chromium.executablePath()") npm run test:web:journey
+      - name: Save screenshots and acceptance records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vistralo-web-evidence
+          path: |
+            deployment-source/vistralo/evidence/web-accessibility/
+            deployment-source/vistralo/evidence/server-web-ui/
+
   deploy:
     name: Deploy production
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.VISTRALO_CUTOVER_READY == 'true'
-    needs: validate
+    needs: [validate, web-browser]
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     environment: production

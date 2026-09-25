@@ -20,6 +20,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts
 COPY src ./src
 COPY server-ui ./server-ui
+COPY web ./web
+COPY scripts/build-web.cjs ./scripts/build-web.cjs
 COPY deploy ./deploy
 RUN npm run build:server \
  && npm prune --omit=dev --ignore-scripts \

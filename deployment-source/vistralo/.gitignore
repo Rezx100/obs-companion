@@ -14,3 +14,9 @@ scripts/uninstall-files.nsh
 deploy/runtime.env
 deploy/image-receipt.json
 server-ui/hash-worker.js
+
+# Cloud build and private runtime configuration
+dist-web/
+.env*
+!.env.example
+supabase/.temp/

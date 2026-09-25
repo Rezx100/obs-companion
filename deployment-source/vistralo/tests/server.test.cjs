@@ -98,6 +98,7 @@ test('server reports whether the active operation can actually be cancelled',asy
     const pending=client.rpc('uploadComplete',{upload:upload.id});
     while(!client.app.active)await new Promise(resolve=>setTimeout(resolve,5));
     assert.equal((await client.rpc('status')).active.cancellable,false);
+    await assert.rejects(()=>client.rpc('cancel',{id:project.id}),/verification is already finishing/);
     release();await pending;
   }finally{await client.app.close();fs.rmSync(root,{recursive:true,force:true});}
 });

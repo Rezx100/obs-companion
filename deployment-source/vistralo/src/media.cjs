@@ -10,7 +10,7 @@ function run(exe,args,{signal,onProgress}={}) {return new Promise((resolve,rejec
 class Media {
  constructor({ffmpeg='ffmpeg',ffprobe='ffprobe'}={}) {this.ffmpeg=ffmpeg;this.ffprobe=ffprobe;}
  async check(){return {ffmpeg:(await run(this.ffmpeg,['-version'])).split('\n')[0],ffprobe:(await run(this.ffprobe,['-version'])).split('\n')[0]};}
- async probe(file){return JSON.parse(await run(this.ffprobe,['-v','error','-show_streams','-show_format','-of','json',file]));}
+ async probe(file){return JSON.parse(await run(this.ffprobe,['-v','error','-protocol_whitelist','file,pipe','-format_whitelist','mov,matroska,webm,wav,mp3','-show_streams','-show_format','-of','json',file]));}
  async output(root,name,args,options={}) {
   disk(root,32*1024**2);assert(/^[a-zA-Z0-9_-]+$/.test(name),'Invalid output name');const rel=`exports/${name}-${id().slice(0,8)}.mp4`;const out=within(root,rel);fs.mkdirSync(path.dirname(out),{recursive:true});const temp=out+'.partial.mp4';
   try {await run(this.ffmpeg,['-hide_banner','-nostdin','-n',...args,'-movflags','+faststart','-progress','pipe:1',temp],options);const p=await this.probe(temp);assert(p.streams.some(s=>s.codec_type==='video')&&Number(p.format.duration)>0,'Output contains no usable video');fs.renameSync(temp,out);return {file:rel,sha256:await hash(out),duration:Number(p.format.duration),streams:p.streams.map(({codec_type,codec_name,width,height})=>({codec_type,codec_name,width,height}))};}catch(e){try{fs.unlinkSync(temp)}catch{}throw e;}

@@ -16,10 +16,17 @@
     "test:integration": "node scripts/integration.cjs",
     "package:win": "npm run build && electron-builder --win --dir --x64",
     "installer:custom": "node scripts/build-installer.cjs",
-    "build:server": "esbuild server-ui/hash-worker.source.js --bundle --minify --outfile=server-ui/hash-worker.js",
-    "server": "node src/server.cjs"
+    "build:server": "esbuild server-ui/hash-worker.source.js --bundle --minify --outfile=server-ui/hash-worker.js && npm run build:web",
+    "server": "node src/server.cjs",
+    "build:web": "node scripts/build-web.cjs",
+    "typecheck:web": "tsc -p tsconfig.web.json",
+    "lint:design": "node scripts/lint-design.cjs",
+    "test:web:a11y": "node scripts/web-accessibility-test.cjs",
+    "test:web:journey": "node scripts/server-ui-test.cjs",
+    "build:cloud": "node scripts/build-cloud.cjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "2.99.1",
     "crypto-js": "4.2.0",
     "obs-websocket-js": "5.0.6",
     "playwright": "1.58.2",
@@ -29,9 +36,13 @@
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",
     "@sparticuz/chromium": "143.0.4",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "axe-core": "^4.11.0",
     "electron": "44.4.5",
     "electron-builder": "26.15.3",
-    "esbuild": "0.28.2"
+    "esbuild": "0.28.2",
+    "typescript": "5.9.3"
   },
   "build": {
     "appId": "dev.rezan.obscompanion",
