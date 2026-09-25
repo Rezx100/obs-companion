@@ -1,6 +1,6 @@
 # Agentic GitHub CI/CD
 
-The private GitHub repository is the only collaboration and deployment control plane agents need. Agents do not receive the VPS password, studio token, OBS WebSocket password, provider credentials, or an unrestricted server shell.
+The public GitHub repository is the collaboration and deployment control plane agents need. Agents do not receive the VPS password, studio token, OBS WebSocket password, provider credentials, or an unrestricted server shell.
 
 Repository: `https://github.com/Rezx100/obs-companion`
 
@@ -25,7 +25,7 @@ The repository uses these production settings:
 
 GitHub collaborators with write access can create branches and pull requests. A collaborator permitted to merge to `main` or manually run the workflow can deploy. GitHub history records the actor, reviewed revision, validation, environment deployment, and logs.
 
-The current GitHub Free personal plan does not offer branch-protection rules for private repositories. GitHub rejected that optional setting, so the repository remains private and the workflow itself enforces `deploy.needs: validate`. Upgrade the account to GitHub Pro to additionally require pull requests/status checks at the branch layer. Do not make the repository public merely to obtain free branch protection because the history contains deployment architecture and operational evidence.
+The public repository protects `main`: changes require a pull request, the strict `Validate source` check, resolved conversations, and linear history. Force-pushes and branch deletion are disabled. The workflow additionally enforces `deploy.needs: validate`, so deployment cannot start unless validation succeeds.
 
 ## Rotation and revocation
 
