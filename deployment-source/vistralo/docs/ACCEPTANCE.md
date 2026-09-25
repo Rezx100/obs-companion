@@ -106,3 +106,13 @@ The standard `dist:win` artifact name and the custom NSIS `OutFile` both use `Vi
 ## Legal notice status
 
 Unpublished Vistralo legal drafts are in `docs/legal/`. No public privacy/terms pages or desktop/server policy links have been released. Legal operator facts and a tested rights/deletion process are still missing; do not call the product US, EEA or UK compliant on this basis.
+
+
+
+## Marketing story acceptance — 25 September 2026
+
+The marketing implementation is a review build, not a public launch. `evidence/marketing/browser.json` records five requested viewport sizes with zero automated axe violations and no horizontal overflow; fallback checks cover no JavaScript, reduced motion and forced colors. Temporary synthetic assets exercise continuous Stage initialization, modal focus/Escape, 2% keyboard comparison, scroll override ownership, mobile judgment toggles, Skip-to-pricing focus and missing-frame fallback. These assets are not product evidence and are deleted after the test.
+
+Unit tests verify safe media paths, shared capture provenance, mobile coordinates, narration excerpts, codec budgets, optional-scene cuts, trial claims and bitmap cache lifetime. Desktop/server builds and web typechecking pass; the production dependency audit reports zero vulnerabilities. The home bundle is approximately 49 KB gzip. Source-copy review does not establish LCP/INP, hardware frame rate, legal approval, real provider quality or whole-site rebuild fidelity.
+
+The release gate is intentionally failing: Golden Capture, real narrated output and an approved whole-site agent rebuild/comparison remain missing. Free-trial pricing, supported-agent names and rebrand/comments are not asserted. No paid provider generation, production deployment or live domain replacement was performed. See `docs/MARKETING-IMPLEMENTATION.md` and `docs/MARKETING-ASSETS.md`.

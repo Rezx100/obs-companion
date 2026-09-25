@@ -24,17 +24,25 @@
     "test:web:a11y": "node scripts/web-accessibility-test.cjs",
     "test:web:journey": "node scripts/server-ui-test.cjs",
     "build:cloud": "node scripts/build-cloud.cjs",
-    "build:hostinger": "node scripts/build-hostinger.cjs"
+    "build:hostinger": "node scripts/build-hostinger.cjs",
+    "build:marketing": "node scripts/build-marketing.cjs",
+    "build:marketing:release": "node scripts/build-marketing.cjs --release",
+    "test:marketing": "node scripts/marketing-browser-test.cjs",
+    "build:hostinger:marketing": "node scripts/build-hostinger-marketing.cjs",
+    "preview:marketing": "node scripts/preview-marketing.cjs",
+    "assets:marketing": "node scripts/extract-marketing-frames.cjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.99.1",
     "crypto-js": "4.2.0",
+    "gsap": "3.13.0",
     "obs-websocket-js": "5.0.6",
     "playwright": "1.58.2",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@fontsource/jetbrains-mono": "5.2.6",
     "@modelcontextprotocol/sdk": "^1.26.0",
     "@sparticuz/chromium": "143.0.4",
     "@types/react": "19.2.2",

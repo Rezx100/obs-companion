@@ -1,0 +1,32 @@
+{
+  "title": "Vistralo: from a website you admire to a brief your team can build",
+  "description": "Capture a reference website, review its structure and motion, and edit an evidence-backed brief in Vistralo.",
+  "hero": {
+    "label": "For teams that start from a reference",
+    "title": "Turn a website you admire into a brief your team can build.",
+    "support": "Capture the page. Review its structure, spacing and motion. Give your team a brief with the evidence attached.",
+    "secondary": "See how it works",
+    "footnote": "Access is currently provided by invitation."
+  },
+  "nav": {"how": "How it works", "pricing": "Pricing", "docs": "Docs", "login": "Log in", "skip": "Skip story"},
+  "workflow": {
+    "title": "Keep the reference. Capture the reasoning.",
+    "support": "A useful handoff connects what you see to what your team needs to build.",
+    "steps": [
+      {"number":"01", "title":"Capture the details", "copy":"Record a public website at your chosen viewport. Collect frames, visible styles and observed interactions together."},
+      {"number":"02", "title":"Review the evidence", "copy":"Inspect the captured moments and measured behavior. Coverage notes show what the session could and could not observe."},
+      {"number":"03", "title":"Make the brief useful", "copy":"Edit the Markdown brief, download it, and share the selected output through an expiring, read-only link."}
+    ]
+  },
+  "pricing": {"title":"Start a conversation.", "support":"Vistralo is available by invitation. Public plans and free-trial limits have not been announced.", "cta":"Ask about access", "note":"Tell us what you want to capture and how your team works."},
+  "closing": {"title":"Start with a site you love.", "support":"Bring a reference. Keep your own content and brand."},
+  "faq": [
+    {"question":"Which websites can I record?", "answer":"The current website capture flow visits public pages reachable by its browser. Sign-in walls, private networks and some interactions can limit coverage. The report records those limits. Only capture material you are authorized to use."},
+    {"question":"Does Vistralo copy a website for me?", "answer":"The current product creates capture evidence and a visual brief. It does not automatically build or rebrand a website. Use your own content and assets when your team builds from the brief."},
+    {"question":"Do I need to code?", "answer":"You can review and edit the brief without writing code. Implementing a website from it is a separate step for your team or coding tools."},
+    {"question":"What does my team receive?", "answer":"An editable Markdown brief with observed layout and motion, captured frames, reference timings and coverage notes. The exact output depends on what the capture could observe."},
+    {"question":"Who can see my recordings?", "answer":"Cloud project access is restricted to the owning account. Creating a share link makes the selected output accessible to anyone with that link until expiry or revocation. Do not include sensitive information in shared material."},
+    {"question":"Can I edit the brief?", "answer":"Yes. Edit the Markdown text in the project’s brief view before downloading or sharing it."}
+  ],
+  "story": {"listen":"Listen", "close":"Close narration", "videoError":"The video could not be loaded. Read the transcript below.", "original":"Original recording", "rebuilt":"Rebuilt from the brief", "compare":"Compare original and rebuild", "generic":"Generic", "vistralo":"Vistralo", "skipLabel":"Skip to pricing"}
+}

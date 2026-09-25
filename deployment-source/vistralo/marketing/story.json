@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "capture": {
+    "id": null,
+    "productRevision": null,
+    "rightsConfirmed": false,
+    "redesignedProductApproved": false,
+    "sha256": null
+  },
+  "frames": {
+    "desktop": {
+      "template": "/story/stage-d-{frame}.avif",
+      "fallback": "/story/stage-d-{frame}.webp",
+      "width": 1280,
+      "height": 800
+    },
+    "mobile": {
+      "template": "/story/stage-m-{frame}.avif",
+      "fallback": "/story/stage-m-{frame}.webp",
+      "width": 720,
+      "height": 1280
+    },
+    "count": 180
+  },
+  "narration": {
+    "mp4": null,
+    "webm": null,
+    "vtt": null,
+    "transcript": null,
+    "approved": false
+  },
+  "compare": {
+    "original": null,
+    "rebuilt": null,
+    "uneditedAgentOutput": false
+  },
+  "features": {
+    "agents": [],
+    "team": [],
+    "rebrand": false
+  },
+  "pricing": {
+    "approved": false,
+    "plans": [],
+    "freeLimits": null
+  },
+  "cta": {
+    "label": "Request access",
+    "href": "mailto:contact@vistralo.com?subject=Vistralo%20access",
+    "trialVerified": false
+  },
+  "analytics": {
+    "endpoint": null
+  },
+  "scenes": [
+    {
+      "id": "capture",
+      "title": "Turn a website reference into a brief your team can build.",
+      "support": "Record the reference, review its design decisions, and prepare the handoff.",
+      "scrollVh": 140,
+      "range": [
+        0,
+        35
+      ],
+      "desktopPoster": null,
+      "mobilePoster": null,
+      "captions": [],
+      "callouts": [],
+      "enabled": false,
+      "evidence": {
+        "captureId": null,
+        "productRevision": null,
+        "approved": false,
+        "outputPath": null,
+        "capabilities": {
+          "liveCapture": false
+        }
+      }
+    },
+    {
+      "id": "observe",
+      "title": "It names what it sees. In real terms.",
+      "support": "Sections, spacing, motion, type, and why each choice works.",
+      "scrollVh": 160,
+      "range": [
+        36,
+        83
+      ],
+      "desktopPoster": null,
+      "mobilePoster": null,
+      "captions": [],
+      "callouts": [],
+      "enabled": false,
+      "evidence": {
+        "captureId": null,
+        "productRevision": null,
+        "approved": false,
+        "outputPath": null,
+        "capabilities": {
+          "realMeasurements": false,
+          "realNarration": false
+        }
+      }
+    },
+    {
+      "id": "judgment",
+      "title": "Same frame. Different eyes.",
+      "support": "Read the observation alongside the section it describes.",
+      "scrollVh": 100,
+      "range": [
+        68,
+        68
+      ],
+      "desktopPoster": null,
+      "mobilePoster": null,
+      "captions": [],
+      "callouts": [],
+      "enabled": false,
+      "evidence": {
+        "captureId": null,
+        "productRevision": null,
+        "approved": false,
+        "outputPath": null,
+        "capabilities": {
+          "generatedCaption": false
+        }
+      }
+    },
+    {
+      "id": "brief",
+      "title": "The walkthrough becomes a brief.",
+      "support": "Review the sections and references before handing them to your team.",
+      "scrollVh": 140,
+      "range": [
+        84,
+        107
+      ],
+      "desktopPoster": null,
+      "mobilePoster": null,
+      "captions": [],
+      "callouts": [],
+      "enabled": false,
+      "evidence": {
+        "captureId": null,
+        "productRevision": null,
+        "approved": false,
+        "outputPath": null,
+        "capabilities": {
+          "shippedBrief": false,
+          "extractedTokens": false
+        }
+      }
+    },
+    {
+      "id": "build",
+      "title": "Hand it to your agent. Get the build back.",
+      "support": "Compare the reference with the real output of the brief.",
+      "scrollVh": 180,
+      "range": [
+        108,
+        155
+      ],
+      "desktopPoster": null,
+      "mobilePoster": null,
+      "captions": [],
+      "callouts": [],
+      "enabled": false,
+      "evidence": {
+        "captureId": null,
+        "productRevision": null,
+        "approved": false,
+        "outputPath": null,
+        "capabilities": {
+          "supportedAgent": null,
+          "uneditedAgentOutput": false
+        }
+      }
+    },
+    {
+      "id": "brand",
+      "title": "Your content. Your brand. Their craft.",
+      "support": "Swap the tokens and the copy. Keep the structure and the motion.",
+      "scrollVh": 100,
+      "range": [
+        156,
+        179
+      ],
+      "desktopPoster": null,
+      "mobilePoster": null,
+      "captions": [],
+      "callouts": [],
+      "enabled": false,
+      "evidence": {
+        "captureId": null,
+        "productRevision": null,
+        "approved": false,
+        "outputPath": null,
+        "capabilities": {
+          "shippedRebrand": false
+        }
+      }
+    }
+  ]
+}
