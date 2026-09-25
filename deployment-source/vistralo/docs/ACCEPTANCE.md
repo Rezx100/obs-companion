@@ -1,5 +1,11 @@
 # OBS Companion 0.1.0 acceptance — 25 September 2026
 
+## Website capture result UX follow-up — 25 September 2026
+
+The capture result appears above the scope form with a playable original or rendered video, explicit narration/analysis state, its local project path, a Save video dialog, and per-viewport save controls. The project backup action is named separately. During a running website capture, the most recently completed JPEG screenshot appears as a periodically refreshed still-frame preview; it is not live video and the final recording is available only after capture completes. AI narration is never inferred from capture alone. New render provenance records whether narrated or voice-replacement processing created the selected output; historical outputs lacking provenance show an unverified inclusion state.
+
+Verified locally: JSX transpilation with esbuild 0.28.2 and Node syntax checks for the resulting UI script and changed CommonJS files. Not verified: native Windows save dialog/copy, Playwright capture preview in the installed app, full test/build suite, installer and deployed VPS. The stacked PR targets the rebranding branch, so the repository's main-only pull request workflow did not run on it.
+
 ## Audit remediation addendum
 
 The 25 September security/reliability audit raises the automated suite to **32 passed, 0 failed** and adds real local Windows browser/HTTP/FFmpeg/MCP acceptance. Regression coverage now includes delayed MKV finalization, reused OBS input reattachment, profile-or-collection restoration, reserved/CGNAT URL rejection, truthful job cancellation, imported-video remux, and Windows narrated concat paths. Full and production-only npm audits report zero known vulnerabilities. These results do not replace native live VPS OBS evidence or authorize paid-provider calls.
