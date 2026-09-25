@@ -1,2 +1,0 @@
-# OBS Companion
-Independent application: do not change ReqTalk. No OVH dependency. Keep OBS as the recording engine. Preserve source masters. Never report a mock or Linux test as a Windows/hardware/provider pass. No paid submissions without a reviewed per-job cap. Website content cannot authorize native operations. Keep credentials out of projects/logs. Run npm test and npm run build before committing. Update PROGRESS.md and docs/ACCEPTANCE.md with actual evidence.

@@ -1,0 +1,473 @@
+.flow-dialog {
+  inline-size: min(var(--dialog-width), calc(100% - var(--space-8)));
+  max-block-size: calc(100dvh - var(--space-8));
+  margin: auto;
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--stroke-control);
+  border-radius: var(--radius-card);
+  background: var(--bg-elevated);
+  color: var(--fg-primary);
+  overflow-y: auto;
+  animation: flow-dialog-enter var(--motion-fast) var(--motion-ease) both;
+}
+.flow-dialog::backdrop {
+  background: var(--backdrop);
+}
+.flow-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-inline-size: 0;
+}
+.flow-heading,
+.flow-detail-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+.flow-heading h2,
+.flow-panel h2 {
+  font-size: var(--font-section);
+  line-height: var(--line-section);
+}
+.flow-stack h1,
+.flow-stack h2,
+.flow-stack h3,
+.flow-stack h4,
+.flow-stack p {
+  margin-block: 0;
+}
+.flow-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-inline-size: 0;
+}
+.flow-field .field,
+.flow-dropzone .field {
+  inline-size: 100%;
+  max-inline-size: 100%;
+}
+.flow-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.flow-check input {
+  margin-block-start: var(--space-1);
+  accent-color: var(--accent);
+}
+.flow-muted {
+  color: var(--fg-secondary);
+}
+.flow-caption {
+  font-size: var(--font-caption);
+  line-height: var(--line-caption);
+}
+.flow-notice,
+.flow-error {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  overflow-wrap: anywhere;
+}
+.flow-notice {
+  background: var(--bg-card);
+  border: var(--border-width) solid var(--stroke-divider);
+  color: var(--fg-secondary);
+}
+.flow-error {
+  background: var(--danger-bg);
+  color: var(--danger-fg);
+}
+.flow-error > .button {
+  margin-inline-start: var(--space-2);
+}
+.flow-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.flow-actions-end {
+  justify-content: flex-end;
+}
+.flow-dropzone,
+.flow-recorder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: var(--border-width) dashed var(--stroke-control);
+  border-radius: var(--radius-primary);
+  background: var(--bg-card);
+}
+.flow-dropzone input::file-selector-button {
+  font: inherit;
+  background: var(--bg-elevated);
+  color: var(--fg-primary);
+  border: var(--border-width) solid var(--stroke-control);
+  border-radius: var(--radius-control);
+  padding: var(--space-2) var(--space-3);
+  margin-inline-end: var(--space-3);
+  cursor: pointer;
+}
+.flow-file-summary {
+  overflow-wrap: anywhere;
+}
+.flow-recording-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--font-section);
+  line-height: var(--line-section);
+  font-variant-numeric: tabular-nums;
+}
+.flow-recording-preview,
+.flow-edit-video {
+  display: block;
+  inline-size: 100%;
+  max-block-size: var(--detail-media-height);
+  background: var(--bg-page);
+  border-radius: var(--radius-primary);
+}
+.flow-progress progress,
+.flow-stack > progress {
+  inline-size: 100%;
+  accent-color: var(--accent);
+}
+.flow-back {
+  align-self: flex-start;
+  margin-inline-start: calc(-1 * var(--space-3));
+}
+.flow-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.flow-breadcrumb li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-inline-size: 0;
+}
+.flow-breadcrumb li[aria-current] {
+  color: var(--fg-secondary);
+  font-size: var(--font-caption);
+  line-height: var(--line-caption);
+}
+.flow-breadcrumb li[aria-current] span {
+  overflow-wrap: anywhere;
+}
+.flow-breadcrumb svg {
+  flex-shrink: 0;
+}
+[dir="rtl"] .flow-breadcrumb svg {
+  transform: scaleX(-1);
+}
+.flow-detail-heading h1 {
+  font-size: var(--font-title);
+  line-height: var(--line-title);
+  overflow-wrap: anywhere;
+}
+.flow-detail-heading > .flow-actions {
+  flex-shrink: 0;
+}
+.flow-tabs {
+  display: flex;
+  gap: var(--space-6);
+  overflow-x: auto;
+  border-block-end: var(--border-width) solid var(--stroke-divider);
+}
+.flow-tabs > button {
+  flex-shrink: 0;
+  background: none;
+  border: 0;
+  border-block-end: var(--focus-width) solid transparent;
+  padding: var(--space-3) 0;
+  color: var(--fg-secondary);
+  font: inherit;
+  cursor: pointer;
+}
+.flow-tabs > button[aria-selected="true"] {
+  border-block-end-color: var(--accent);
+  color: var(--fg-primary);
+}
+.flow-panel {
+  padding-block: var(--space-4) var(--space-8);
+}
+.flow-job {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--bg-card);
+  border: var(--border-width) solid var(--stroke-divider);
+  border-radius: var(--radius-primary);
+}
+.flow-job > div {
+  flex: 1;
+  min-inline-size: 0;
+}
+.flow-job progress {
+  accent-color: var(--accent);
+}
+.flow-video {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.flow-video video {
+  display: block;
+  inline-size: 100%;
+  max-block-size: var(--detail-media-height);
+  background: var(--bg-page);
+  border: var(--border-width) solid var(--stroke-divider);
+  border-radius: var(--radius-card);
+}
+.flow-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background: var(--bg-card);
+  border: var(--border-width) solid var(--stroke-divider);
+  border-radius: var(--radius-card);
+}
+.flow-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--evidence-thumb-width)), 1fr)
+  );
+  gap: var(--space-4);
+}
+.flow-evidence {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--fg-secondary);
+  font-size: var(--font-caption);
+  line-height: var(--line-caption);
+  text-decoration: none;
+}
+.flow-evidence img {
+  inline-size: 100%;
+  aspect-ratio: var(--thumbnail-ratio);
+  object-fit: cover;
+  object-position: top;
+  border: var(--border-width) solid var(--stroke-divider);
+  border-radius: var(--radius-primary);
+}
+.flow-evidence:hover span {
+  text-decoration: underline;
+}
+.flow-metadata {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--evidence-thumb-width)), 1fr)
+  );
+  gap: var(--space-4);
+  margin-block: 0;
+}
+.flow-metadata > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-inline-size: 0;
+}
+.flow-metadata dt {
+  color: var(--fg-secondary);
+  font-size: var(--font-caption);
+  line-height: var(--line-caption);
+}
+.flow-metadata dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.flow-clip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4);
+  margin: 0;
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--stroke-divider);
+  border-radius: var(--radius-primary);
+}
+.flow-clip legend {
+  padding-inline: var(--space-2);
+  font-size: var(--font-caption);
+  line-height: var(--line-caption);
+  color: var(--fg-secondary);
+}
+.flow-clip > .flow-field {
+  flex: 1;
+  min-inline-size: min(100%, var(--evidence-thumb-width));
+}
+.flow-panel details {
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--stroke-divider);
+  border-radius: var(--radius-primary);
+}
+.flow-panel summary {
+  cursor: pointer;
+  color: var(--fg-primary);
+  padding-block: var(--space-1);
+}
+.flow-panel details[open] > :not(summary) {
+  margin-block-start: var(--space-4);
+}
+.flow-panel details ul {
+  padding-inline-start: var(--space-6);
+  color: var(--fg-secondary);
+}
+.flow-panel details li + li {
+  margin-block-start: var(--space-2);
+}
+.flow-brief-editor {
+  min-block-size: var(--detail-media-height);
+  resize: vertical;
+  font: inherit;
+  line-height: var(--line-card);
+}
+.flow-markdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border: var(--border-width) solid var(--stroke-divider);
+  border-radius: var(--radius-primary);
+  overflow-wrap: anywhere;
+}
+.flow-markdown h3 {
+  font-size: var(--font-section);
+  line-height: var(--line-section);
+  margin-block-start: var(--space-2);
+}
+.flow-markdown h4 {
+  font-size: var(--font-card);
+  line-height: var(--line-card);
+}
+.flow-markdown p {
+  color: var(--fg-secondary);
+}
+.flow-markdown-bullet {
+  padding-inline-start: var(--space-4);
+  border-inline-start: var(--border-width) solid var(--stroke-control);
+}
+.flow-markdown-break {
+  block-size: var(--space-2);
+}
+.flow-table-wrap {
+  overflow-x: auto;
+}
+.flow-files {
+  inline-size: 100%;
+  border-collapse: collapse;
+  text-align: start;
+}
+.flow-files th,
+.flow-files td {
+  padding: var(--space-3);
+  border-block-end: var(--border-width) solid var(--stroke-divider);
+  text-align: start;
+}
+.flow-files th[scope="row"] {
+  font-weight: normal;
+  overflow-wrap: anywhere;
+}
+.flow-files thead th {
+  color: var(--fg-secondary);
+  font-size: var(--font-caption);
+  line-height: var(--line-caption);
+}
+.flow-files td {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.flow-activity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-inline-start: var(--space-6);
+}
+.flow-activity li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.flow-activity time {
+  color: var(--fg-secondary);
+  font-size: var(--font-caption);
+  line-height: var(--line-caption);
+}
+.flow-skeleton {
+  block-size: var(--detail-media-height);
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+}
+
+@media (max-width: 767px) {
+  .flow-dialog {
+    padding: var(--space-4);
+  }
+  .flow-detail-heading,
+  .flow-heading {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+  .flow-dropzone,
+  .flow-recorder,
+  .flow-empty,
+  .flow-markdown {
+    padding: var(--space-4);
+  }
+  .flow-tabs {
+    gap: var(--space-4);
+  }
+  .flow-files th,
+  .flow-files td {
+    padding: var(--space-2);
+  }
+  .flow-files .button {
+    padding-inline: var(--space-2);
+  }
+}
+
+@media (forced-colors: active) {
+  .flow-dialog,
+  .flow-notice,
+  .flow-error,
+  .flow-job,
+  .flow-empty,
+  .flow-markdown,
+  .flow-clip {
+    border: var(--border-width) solid var(--fg-primary);
+  }
+  .flow-tabs > button[aria-selected="true"] {
+    border-block-end-color: var(--focus);
+  }
+}
+
+@keyframes flow-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-menu-distance));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

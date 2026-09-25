@@ -1,0 +1,26 @@
+{
+  "installer": "Vistralo-0.1.0-Setup.exe",
+  "bytes": 163642906,
+  "sha256": "0bfd091455a143f2d25a8b918edea651eff4730c75ad3c91066b6ccfa6ab0a9d",
+  "peHeaderValid": true,
+  "nsisHeaderOffset": 57856,
+  "nsisHeaderSize": 85486,
+  "deflateBytesVerified": 409422872,
+  "crc32Valid": true,
+  "crcStart": 512,
+  "embeddedChecks": [
+    {
+      "file": "resources/app.asar",
+      "sha256": "26e77272be37ae68b8c7d0cde95f1c1d8214dff7511b87cf9ebe7f3a1dadc677"
+    },
+    {
+      "file": "resources/browsers/ffmpeg-1011/ffmpeg-win64.exe",
+      "sha256": "5b8f3f59ba61685828939ff3c833109748adbdea2fff4b4ae570c9fc0fc1ff4d"
+    }
+  ],
+  "signed": false,
+  "windowsExecuted": false,
+  "verification": "2026-09-25 Vistralo Windows artifact correction",
+  "sourceConfig": "package.json artifactName Vistralo-${version}-Setup.${ext}; scripts/installer.nsi Publisher Dynamix LTD",
+  "nativeWindowsInstallTested": false
+}

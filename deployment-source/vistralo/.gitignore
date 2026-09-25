@@ -1,0 +1,22 @@
+node_modules/
+dist/
+ui/app.js
+ui/app.js.map
+.cache/
+work/
+*.log
+scripts/uninstall-files.nsh
+
+.env
+
+.env.*
+
+deploy/runtime.env
+deploy/image-receipt.json
+server-ui/hash-worker.js
+
+# Cloud build and private runtime configuration
+dist-web/
+.env*
+!.env.example
+supabase/.temp/
