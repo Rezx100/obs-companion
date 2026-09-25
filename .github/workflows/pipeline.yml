@@ -2,7 +2,7 @@ name: Agentic CI/CD
 
 on:
   pull_request:
-    branches: [main, codex/rebrand-vistralo, codex/clarify-website-video-results]
+    branches: [main, codex/rebrand-vistralo, codex/clarify-website-video-results, codex/vistralo-web-app]
   push:
     branches: [main]
   workflow_dispatch:
@@ -80,7 +80,15 @@ jobs:
         run: |
           npm run build:server
           npm run test:web:a11y
+          npm run build:marketing
+          npm run test:marketing
           VISTRALO_TEST_CHROMIUM=$(node -p "require('playwright').chromium.executablePath()") npm run test:web:journey
+      - name: Save marketing review build
+        uses: actions/upload-artifact@v4
+        with:
+          name: vistralo-marketing-preview
+          path: deployment-source/vistralo/dist-marketing/
+
       - name: Save screenshots and acceptance records
         if: always()
         uses: actions/upload-artifact@v4
@@ -89,6 +97,7 @@ jobs:
           path: |
             deployment-source/vistralo/evidence/web-accessibility/
             deployment-source/vistralo/evidence/server-web-ui/
+            deployment-source/vistralo/evidence/marketing/
 
   deploy:
     name: Deploy production
@@ -132,3 +141,4 @@ jobs:
               -o IdentitiesOnly=yes \
               -o StrictHostKeyChecking=yes \
               "root@$VPS_HOST"
+

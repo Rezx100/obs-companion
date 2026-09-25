@@ -1,5 +1,13 @@
 # OBS Companion progress
 
+## Marketing story implementation — 25 September 2026
+
+Implemented both v1.0 marketing handoffs on the web-app branch: pre-rendered marketing pages, shared product tokens, a continuous GSAP Stage with bounded decoding, no-JS/reduced-motion paths, narration dialog, accessible comparison, original Fernhill reference site, provenance/budget gates, raw frame extraction and a gated Hostinger composition build. No product recordings, paid jobs or production changes were made.
+
+Local checks: full unit suite and desktop/server/type builds; production npm audit; five viewport axe/overflow checks; synthetic desktop/mobile story interactions, missing-assets fallback and no-JS/reduced-motion checks. See `evidence/marketing/` and `docs/MARKETING-IMPLEMENTATION.md`. The current home JavaScript is approximately 49 KB gzip, below the 150 KB budget. This is not a 4G/hardware performance signoff.
+
+**Not launch-ready:** real redesigned-product approval, Golden Capture, narrated output/VTT, complete agent rebuild/comparison, public pricing and final legal disclosures are absent. Unsupported optional scenes are cut; the release command fails for missing core evidence. The preview uses Request access and clearly identifies the owned reference site rather than presenting it as Vistralo output. Public `vistralo.com` remains unchanged.
+
 ## Website capture result and preview — 25 September 2026
 
 A Windows preview user reported that after a website capture, the video, narration state, saved location and next action were unclear, with no live visual feedback. The follow-up branch adds a result panel above scope settings, playable output or original evidence, explicit AI narration and analysis status, direct Save video dialogs, per-viewport Save actions, and a distinct project-backup label. During capture, completed JPEG frames update the result panel as a live still-frame preview; this is not a real-time video stream. Rendered outputs record their processing action so the UI claims narration inclusion only for narrated or voice-replacement renders. Previous outputs without provenance are marked unverified.
@@ -53,3 +61,4 @@ Source branch `codex/rebrand-vistralo` changes first-party package, runtime, des
 ## Legal disclosure audit — 25 September 2026
 
 The engineering rebrand changed desktop/server names, but no privacy policy, service terms or storage notice existed in the repository or app navigation. Added Vistralo-specific unpublished drafts and a verified product data map under `docs/legal/`. These are not a compliance certification and are not linked as live policies. Operator identity, privacy contact, retention/deletion, provider contracts, transfer safeguards and customer terms must be supplied and reviewed before publication. The current shared-token studio is not suitable for independent customer accounts.
+

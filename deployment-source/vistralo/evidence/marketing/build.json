@@ -1,0 +1,28 @@
+{
+  "ready": false,
+  "release": false,
+  "jsGzipBytes": 49362,
+  "assets": {
+    "js": "/marketing-assets/story-97796505d786.js",
+    "css": "/marketing-assets/style-1bc34cda8d70.css"
+  },
+  "enabledScenes": [],
+  "warnings": [
+    "Pricing is omitted until approved plans exist.",
+    "scene.capture is cut until its real product evidence is approved.",
+    "scene.observe is cut until its real product evidence is approved.",
+    "scene.judgment is cut until its real product evidence is approved.",
+    "scene.brief is cut until its real product evidence is approved.",
+    "scene.build is cut until its real product evidence is approved.",
+    "scene.brand is cut until its real product evidence is approved.",
+    "Core scene observe is not ready.",
+    "Core scene brief is not ready.",
+    "Core scene build is not ready.",
+    "Golden Capture id is missing.",
+    "Golden Capture product revision is missing.",
+    "Golden Capture reference-site rights are unconfirmed.",
+    "The redesigned product has not been approved for marketing.",
+    "Golden Capture SHA-256 provenance is missing.",
+    "Narrated walkthrough video, captions, and transcript are not enabled."
+  ]
+}

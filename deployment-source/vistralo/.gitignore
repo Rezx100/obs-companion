@@ -20,3 +20,7 @@ dist-web/
 .env*
 !.env.example
 supabase/.temp/
+
+
+dist-marketing/
+evidence/marketing/*.png
